@@ -1,0 +1,9 @@
+@use "../../scss/utils/variables";
+
+.login-button {
+  background-color: variables.$white;
+  border: .1rem solid variables.$black;
+  color: variables.$black;
+  margin-right: 2rem;
+
+}

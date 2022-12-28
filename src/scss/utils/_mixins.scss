@@ -1,0 +1,13 @@
+@use "variables";
+
+@mixin reset {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+@mixin wrapper-desktop {
+  max-width: 114rem;
+  width: 100%;
+  margin: 0 auto;
+}

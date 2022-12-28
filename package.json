@@ -1,0 +1,27 @@
+{
+  "name": "react-learnify",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "eslint": "^8.30.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.57.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
+    "@vitejs/plugin-react": "^3.0.0",
+    "eslint-plugin-react": "^7.31.11",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  }
+}

@@ -1,0 +1,22 @@
+@use "../../scss/utils/variables";
+@use "../../scss/utils/mixins";
+
+.header {
+  background-color: variables.$white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 .1rem .1rem rgba(variables.$black, .1);
+  height: 5.6rem;
+  width: 100%;
+
+  &__wrapper {
+    @include mixins.wrapper-desktop;
+
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+  }
+
+}
