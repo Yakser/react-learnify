@@ -6,4 +6,8 @@
   color: variables.$black;
   margin-right: 2rem;
 
+  @media screen and (max-width: 500px) {
+    margin-right: 0;
+  }
+
 }

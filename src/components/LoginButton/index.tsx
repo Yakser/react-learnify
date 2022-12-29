@@ -8,7 +8,7 @@ const LoginButton = () => {
 	};
 
 	return (
-		<Button className={styles['login-button']} onClick={onClick} text={'Войти'}/>
+		<Button className={styles['login-button']} onClick={onClick} text={'Войти'} link={'/login'} />
 	);
 };
 

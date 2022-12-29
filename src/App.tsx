@@ -1,14 +1,41 @@
-import styles from './App.module.scss';
-import Header from './components/Header';
-import React  from 'react';
+import './App.scss';
+import React from 'react';
+import Main from './pages/Main';
 
-function App() {
+
+import {
+	createBrowserRouter,
+	RouterProvider
+} from 'react-router-dom';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Root from './pages/Root';
+
+const router = createBrowserRouter([
+	{
+		path: '/',
+		element: <Root/>,
+		children: [
+			{
+				path: '/',
+				element: <Main/>,
+			},
+			{
+				path: 'login',
+				element: <Login/>,
+			},
+			{
+				path: 'register',
+				element: <Register/>,
+			},
+		],
+	},
+
+]);
+const App = () => {
 	return (
-		<div className={styles.App}>
-			<h1>Hello Learnify</h1>
-			<Header />
-		</div>
+		<RouterProvider router={router}/>
 	);
-}
+};
 
 export default App;

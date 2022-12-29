@@ -1,0 +1,17 @@
+@use "./scss/utils/variables";
+@use "./scss/utils/mixins";
+
+.app {
+  padding-top: variables.$header-height;
+
+  &__wrapper {
+    @include mixins.wrapper-desktop;
+
+    margin-top: 5rem;
+  }
+}
+
+.title {
+  font-weight: map-get(variables.$font-weights, bold);
+  font-size: 5rem;
+}
