@@ -2,8 +2,6 @@
 @use "./scss/utils/mixins";
 
 .app {
-  padding-top: variables.$header-height;
-
   &__wrapper {
     @include mixins.wrapper-desktop;
 
