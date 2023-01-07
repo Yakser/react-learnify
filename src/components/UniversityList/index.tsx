@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './index.module.scss';
-import {University} from '../../types';
+import {IUniversityList} from '../../utils/types';
 import UniversityCard from '../UniversityCard';
 
 interface UniversityListProps {
-	universities: University[];
+	universities: IUniversityList[];
 }
 
 const UniversityList: React.FC<UniversityListProps> = ({universities}) => {
@@ -19,7 +19,7 @@ const UniversityList: React.FC<UniversityListProps> = ({universities}) => {
 					)}
 				</ul>
 			) : (
-				<p>Ничего не найдено 😔</p>
+				<p className={styles['universities__not-found']}>Ничего не найдено 😔</p>
 			)}
 		</div>
 

@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import SearchForm from '../components/SearchForm';
 import UniversityList from '../components/UniversityList';
-import {University} from '../types';
+import {IUniversityList} from '../utils/types';
 import axios from 'axios';
+import {API_URL} from '../utils/constants';
 
-const API_URL: string = import.meta.env.VITE_API_URL;
 
 const Main = () => {
-	const [universities, setUniversities] = useState<University[]>([]);
+	const [universities, setUniversities] = useState<IUniversityList[]>([]);
 	const [interests, setInterests] = React.useState<string[]>([]);
 	const [city, setCity] = React.useState<string>('');
 

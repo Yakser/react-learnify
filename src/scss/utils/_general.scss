@@ -40,3 +40,7 @@ main {
   color: variables.$white;
   background-color: variables.$blue;
 }
+
+a:visited {
+  color: inherit;
+}

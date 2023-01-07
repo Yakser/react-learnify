@@ -2,14 +2,14 @@
 @use "../../scss/utils/mixins";
 
 .header {
-  background-color: variables.$white;
+  background-color: rgba(variables.$white, .7);
+  backdrop-filter: blur(1.5rem);
   position: sticky;
   top: 0;
   left: 0;
   box-shadow: 0 .1rem .1rem rgba(variables.$black, .1);
   height: variables.$header-height;
   width: 100%;
-  //margin-left: calc(100vw - 100%);
 
   &__wrapper {
     @include mixins.wrapper-desktop;

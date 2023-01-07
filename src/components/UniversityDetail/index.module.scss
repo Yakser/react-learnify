@@ -1,6 +1,6 @@
 @use "../../scss/utils/variables";
 
-.university-card {
+.university {
   border-radius: 5rem;
   padding: 4rem;
   background-color: variables.$gray;
@@ -14,7 +14,7 @@
   &__logo {
     display: block;
     max-width: 100%;
-    max-height: 35rem;
+    max-height: 25rem;
     border-radius: 4rem;
     margin: 0 auto 4rem;
   }
@@ -36,5 +36,9 @@
     padding: .5rem 1rem;
     border-radius: 5rem;
     background-color: variables.$white;
+  }
+
+  &__go-back-button {
+    margin-bottom: 2rem;
   }
 }
