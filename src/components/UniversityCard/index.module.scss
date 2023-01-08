@@ -37,4 +37,10 @@
     border-radius: 5rem;
     background-color: variables.$white;
   }
+
+  @media screen and (max-width: 500px) {
+    &__name {
+      font-size: 3rem;
+    }
+  }
 }
