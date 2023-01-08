@@ -1,26 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styles from './index.module.scss';
-import axios from 'axios';
-import {University} from '../../types';
+import {IUniversityList} from '../../utils/types';
 import UniversityCard from '../UniversityCard';
 
+interface UniversityListProps {
+	universities: IUniversityList[];
+}
 
-const UniversityList = () => {
-	const [universities, setUniversities] = useState<University[]>([]);
-
-	useEffect(() => {
-		const API_URL: string = import.meta.env.VITE_API_URL;
-		axios.get(`${API_URL}/universities/`).then((response) => {
-			const {status, data} = response;
-			if (status === 200) {
-				setUniversities(data);
-			}
-		}).catch((error) => {
-			console.error(error);
-		});
-	}, []);
-
-
+const UniversityList: React.FC<UniversityListProps> = ({universities}) => {
 	return (
 		<div className={styles.universities}>
 			{universities.length > 0 ? (
@@ -32,7 +19,7 @@ const UniversityList = () => {
 					)}
 				</ul>
 			) : (
-				<p>Ничего не найдено 😔</p>
+				<p className={styles['universities__not-found']}>Ничего не найдено 😔</p>
 			)}
 		</div>
 
