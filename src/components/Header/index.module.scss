@@ -24,10 +24,10 @@
     height: max-content;
     padding: 2rem 0;
     position: static;
-    margin-top: - variables.$header-height;
     &__wrapper {
       flex-direction: column;
       justify-content: center;
+      gap: 1rem;
     }
   }
 
