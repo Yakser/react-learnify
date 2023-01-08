@@ -41,6 +41,6 @@ main {
   background-color: variables.$blue;
 }
 
-a:visited {
+a:visited, a:link {
   color: inherit;
 }
