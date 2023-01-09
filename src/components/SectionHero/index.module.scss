@@ -3,33 +3,34 @@
 @use "../../scss/utils/mixins";
 
 .sectionHero {
-  background-image: url('../../img/sectionHero/boy.png'), url('../../img/sectionHero/banner.png');
+  background-size: 100%;
+  background-image: url('../../assets/images/Banner.png');
   background-repeat: no-repeat;
-  padding: 29rem 0 10rem;
+  &__wrapper {
+    @include mixins.wrapper-desktop;
+  }
   &__content{
     display: flex;
     justify-content: center;
     align-items: center;
   }
   &__title {
-    font-family: 'Nunito', serif;
-    font-style: normal;
+    //font-family: 'Nunito', serif;
     font-weight: 800;
     font-size: 7.5rem;
     line-height: 110%;
     color: variables.$white;
   }
   &__text {
-    font-family: 'Nunito', serif;
-    font-style: normal;
+    //font-family: 'Nunito', serif;
     font-weight: 400;
-    font-size: 25px;
+    font-size: 2.5rem;
     line-height: 151.9%;
     color: #FFFFFF;
   }
   &__form {
     padding: 6.6rem 5.4rem;
-    background-color: variables.$white;
+    //background-color: variables.$white;
   }
 
 }

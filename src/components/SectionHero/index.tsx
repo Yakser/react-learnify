@@ -1,13 +1,15 @@
 import React from 'react';
 import styles from './index.module.scss';
+import boy from '../../assets/images/boy.png';
 
 
 const SectionHero = () => {
 	return (
 		<section className={styles.sectionHero}>
-			<div className={styles.container}>
+			<div className={styles.sectionHero__wrapper}>
 				<div className={styles.sectionHero__content}>
-					<h1 className={styles.sectionHero__title}>Поиск вуза</h1>
+					<img src={boy} alt="мальчик бизнесмен"/>
+					<h2 className={styles.sectionHero__title}>Поиск вуза</h2>
 					<p className={styles.sectionHero__text}>Введите ваши интересы и город, и узнайте, какой вуз вам подходит</p>
 				</div>
 				<form className={styles.sectionHero__form}>
