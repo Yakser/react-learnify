@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './index.module.scss';
 import {IUniversityList} from '../../utils/types';
-import UniversityCard from '../UniversityCard';
+const UniversityCard = React.lazy(() => import('../UniversityCard'));
 
 interface UniversityListProps {
 	universities: IUniversityList[];

@@ -11,19 +11,24 @@ interface SearchFormProps {
 
 const SearchForm: React.FC<SearchFormProps> = ({onSearch, onInterestChange, interests, onCityChange, city}) => {
 	return (
-		<form onSubmit={onSearch} className={styles.form}>
-			<label className={styles.form__label}>
+		<form onSubmit={onSearch} className={styles.searchForm}>
+			<label className={styles.searchForm__label}>
 				<span className="visually-hidden">Ваши интересы через запятую</span>
-				<input className={styles.form__input} type="text" name={'interests'} value={interests}
+				<input className={styles.searchForm__input}
+					type="text" name={'interests'}
+					value={interests}
 					onChange={onInterestChange}
 					placeholder={'Ваши интересы через запятую'}/>
 			</label>
-			<label className={styles.form__label}>
+			<label className={styles.searchForm__label}>
 				<span className="visually-hidden">Город поступления</span>
-				<input className={styles.form__input} type="text" name={'city'} value={city}
-					onChange={onCityChange} placeholder={'Город поступления'}/>
+				<input className={styles.searchForm__input}
+					type="text" name={'city'}
+					value={city}
+					onChange={onCityChange}
+					placeholder={'Город поступления'}/>
 			</label>
-			<button className={styles.form__button}>Поиск вуза</button>
+			<button className={styles.searchForm__button}>Поиск вуза</button>
 		</form>
 	);
 };

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import SearchForm from '../components/SearchForm';
 import UniversityList from '../components/UniversityList';
+
 import {IUniversityList} from '../utils/types';
 import axios from 'axios';
 import {API_URL} from '../utils/constants';
