@@ -2,11 +2,10 @@
 @use "../../scss/utils/mixins";
 
 .header {
-  background-color: variables.$white;
+  background-color: transparent;
   position: fixed;
-  top: 0;
+  top: 6rem;
   left: 0;
-  box-shadow: 0 .1rem .1rem rgba(variables.$black, .1);
   height: variables.$header-height;
   width: 100%;
 

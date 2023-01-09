@@ -35,6 +35,11 @@ main {
   overflow: hidden;
 }
 
+.container {
+  width: 140rem;
+  margin: 0 auto;
+}
+
 ::selection {
   color: variables.$white;
   background-color: variables.$blue;

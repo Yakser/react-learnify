@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../Button';
-import styles from '../LoginButton/index.module.scss';
+import styles from './index.module.scss';
 
 const RegisterButton = () => {
 	const onClick = () => {
@@ -8,7 +8,7 @@ const RegisterButton = () => {
 	};
 
 	return (
-		<Button className={styles['register-button']} onClick={onClick} text={'Зарегистрироваться'} link={'/register'}/>
+		<Button className={styles['register-button']} onClick={onClick} text={'Регистрация'} link={'/register'}/>
 	);
 };
 

@@ -1,10 +1,9 @@
 import React from 'react';
-
-
+import SectionHero from '../components/SectionHero';
 const Main = () => {
 	return (
 		<main>
-			<h2 className={'title'}>Главная</h2>
+			<SectionHero/>
 		</main>
 	);
 };

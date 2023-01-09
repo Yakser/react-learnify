@@ -6,7 +6,6 @@ const Root = () => {
 	return (
 		<div className={'app'}>
 			<Header/>
-			<h1 className={'visually-hidden'}>Learnify - рекомендательная система для поиска вуза</h1>
 			<div className="app__wrapper">
 				<Outlet/>
 			</div>
