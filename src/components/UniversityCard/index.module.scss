@@ -1,0 +1,33 @@
+@use "../../scss/utils/variables";
+
+.university-card {
+  border-radius: 5rem;
+  padding: 4rem;
+  background-color: variables.$gray;
+
+  &__name {
+    font-weight: map-get(variables.$font-weights, bold);
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  &__logo {
+    max-width: 100%;
+    max-height: 35rem;
+    border-radius: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 1.8rem;
+  }
+  &__tag {
+    padding: .5rem 1rem;
+    border-radius: 5rem;
+    background-color: variables.$white;
+  }
+
+}
