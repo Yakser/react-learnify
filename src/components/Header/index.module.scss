@@ -2,33 +2,19 @@
 @use "../../scss/utils/mixins";
 
 .header {
-  background-color: rgba(variables.$white, .7);
-  backdrop-filter: blur(1.5rem);
-  position: sticky;
-  top: 0;
+  position: absolute;
+  top: 6rem;
   left: 0;
-  box-shadow: 0 .1rem .1rem rgba(variables.$black, .1);
-  height: variables.$header-height;
   width: 100%;
+  z-index: 100;
 
   &__wrapper {
     @include mixins.wrapper-desktop;
 
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 100%;
-
+    overflow: hidden;
   }
-
-  @media screen and (max-width: 500px) {
-    height: max-content;
-    padding: 2rem 0;
-    position: static;
-    &__wrapper {
-      flex-direction: column;
-      justify-content: center;
-      gap: 1rem;
-    }
-  }
-
 }

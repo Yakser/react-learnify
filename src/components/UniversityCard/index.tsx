@@ -13,7 +13,9 @@ const UniversityCard: React.FC<UniversityCardProps> = ({university}) => {
 	return (
 		<div className={styles['university-card']}>
 			<Link to={LINK_TO_DETAILED}>
-				<img src={university.logo_url} className={styles['university-card__logo']} alt="Логотип университета"/>
+				<img src={university.logo_url}
+					className={styles['university-card__logo']}
+					alt={`Логотип ${university.name}`}/>
 			</Link>
 			<p className={styles['university-card__name']}>
 				<Link to={LINK_TO_DETAILED}>

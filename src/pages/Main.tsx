@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import SearchForm from '../components/SearchForm';
-import UniversityList from '../components/UniversityList';
-
+import {API_URL} from '../utils/constants';
 import {IUniversityList} from '../utils/types';
 import axios from 'axios';
-import {API_URL} from '../utils/constants';
-
+import UniversityList from '../components/UniversityList';
+import Hero from '../components/Hero';
 
 const Main = () => {
 	const [universities, setUniversities] = useState<IUniversityList[]>([]);
@@ -51,15 +49,14 @@ const Main = () => {
 
 	return (
 		<main>
-			<h2 className={'title'}>Главная</h2>
-
-			<SearchForm onSearch={onSearch}
-				onInterestChange={onInterestChange}
-				onCityChange={onCityChange}
+			<Hero
+				city={city}
 				interests={interests}
-				city={city}/>
+				onCityChange={onCityChange}
+				onInterestChange={onInterestChange}
+				onSearch={onSearch}
+			/>
 			<UniversityList universities={universities}/>
-
 		</main>
 	);
 };

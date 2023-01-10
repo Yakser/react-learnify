@@ -4,11 +4,11 @@ $gray: #f9f9f9;
 $blue: #3b49df;
 $black: #171717;
 
-$font-weights: ("black": 900,
+$font-weights: ("black": 800,
         "bold": 700,
-        "medium": 500,
+        "medium": 600,
         "regular": 400,
-        "light": 300, );
+        "light": 300,);
 
 $transition: .3s cubic-bezier(0.25, 0.1, 0.25, 1);
 $infinite-border-radius: 100000px;

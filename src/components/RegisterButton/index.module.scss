@@ -1,0 +1,17 @@
+@use "../../scss/utils/variables";
+
+.register-button {
+  background-color: transparent;
+  border: .1rem solid variables.$white;
+  color: variables.$white;
+  margin-right: 2rem;
+  border-radius: 3.9rem;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+
+  @media screen and (max-width: 500px) {
+    margin-right: 0;
+  }
+
+}

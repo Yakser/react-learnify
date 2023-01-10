@@ -1,13 +1,15 @@
 import React from 'react';
 import styles from './index.module.scss';
-import {Link} from 'react-router-dom';
 
-const Logo = () => {
+
+const Navigation = () => {
 	return (
-		<Link to={'/'} className={styles.logo}>
-			<p className={styles.logo__text}>learnify</p>
-		</Link>
+		<nav className={styles.navigation}>
+			<p className={styles.navigation__link}>Поиск вуза</p>
+			<p className={styles.navigation__link}>Поиск специальности</p>
+			<p className={styles.navigation__link}>Калькулятор</p>
+		</nav>
 	);
 };
 
-export default Logo;
+export default Navigation;
