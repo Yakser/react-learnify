@@ -6,19 +6,43 @@
   position: relative;
   padding-top: 12rem;
 
+  @media screen and (max-width: 1200px) {
+    padding: 0;
+    &__bg {
+      position: relative;
+      left: -25rem;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+
+    &__bg {
+      left: 10rem;
+    }
+  }
+
+
+
+
   &__bg-container {
-    max-width: 114rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    //left: calc(50% - 100rem);
+    top: -17rem;
+
     width: 100%;
+
     margin: 0 auto;
-    position: relative;
+
+    overflow: hidden;
+    z-index: -1;
   }
 
   &__bg {
-    position: absolute;
-    left: -30rem;
-    top: -17rem;
-    width: 180rem;
-    z-index: -1;
+    width: 200rem;
   }
 }
 

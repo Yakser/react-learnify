@@ -75,7 +75,7 @@
     }
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1200px) {
     flex-direction: column;
     gap: 2rem;
     margin: 2rem auto;
@@ -91,5 +91,8 @@
     &__button {
       width: 100%;
     }
+  }
+  @media screen and (max-width: 1200px) {
+    background: rgba(variables.$light-purple, .4);
   }
 }

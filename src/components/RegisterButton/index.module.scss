@@ -6,12 +6,10 @@
   color: variables.$white;
   margin-right: 2rem;
   border-radius: 3.9rem;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 25px;
-
-  @media screen and (max-width: 500px) {
-    margin-right: 0;
+  font-weight: map-get(variables.$font-weights, "medium");
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  @media screen and (max-width: 1200px) {
+    margin: 0;
   }
-
 }

@@ -6,19 +6,21 @@
   cursor: pointer;
 
   &__text {
-    font-family: "Roboto", "Nunito", serif;
+    font-family: "Roboto", "Nunito", -apple-system, system-ui, serif;
     font-size: 3.5rem;
     font-weight: map-get(variables.$font-weights, "bold");
     letter-spacing: .105rem;
     color: transparent;
-    background-image: linear-gradient(87.98deg, #836EFF 12.79%, #6B39FF 58.11%);
+    background-image: linear-gradient(88deg, variables.$light-purple 13%, variables.$dark-purple 58%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 4.3rem;
     white-space: nowrap;
   }
 
-  @media screen and (max-width: 500px) {
-    margin-right: 0;
+  @media screen and (max-width: 1200px) {
+    &__text {
+      -webkit-text-fill-color: variables.$white;
+    }
   }
 }

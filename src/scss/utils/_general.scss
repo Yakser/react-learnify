@@ -11,10 +11,6 @@
 html {
   font-size: 62.5%;
   //margin-left: calc(100vw - 100%);
-
-  @media screen and (max-width: 500px) {
-    font-size: 40%;
-  }
 }
 
 body {
@@ -52,4 +48,10 @@ main {
 
 a:visited, a:link {
   color: inherit;
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 40%;
+  }
 }

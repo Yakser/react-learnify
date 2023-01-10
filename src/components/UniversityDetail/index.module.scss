@@ -5,11 +5,9 @@
   padding: 4rem;
   //background-color: variables.$gray;
 
-
   background: rgba(variables.$white, .4);
   box-shadow: .8rem 4rem 4rem -.5rem rgba(214, 214, 214, 0.25);
   backdrop-filter: blur(1.85rem);
-  //border-radius: 4rem;
 
   &__name {
     font-weight: map-get(variables.$font-weights, bold);
