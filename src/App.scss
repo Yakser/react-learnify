@@ -2,11 +2,52 @@
 @use "./scss/utils/mixins";
 
 .app {
-  &__wrapper {
-    @include mixins.wrapper-desktop;
+  min-height: 100vh;
+  position: relative;
+  padding-top: 12rem;
 
-    margin-top: 3rem;
+  @media screen and (max-width: 1200px) {
+    padding: 0;
+    &__bg {
+      position: relative;
+      left: -25rem;
+    }
   }
+
+  @media screen and (max-width: 700px) {
+
+    &__bg {
+      left: 10rem;
+    }
+  }
+
+
+
+
+  &__bg-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    //left: calc(50% - 100rem);
+    top: -17rem;
+
+    width: 100%;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  &__bg {
+    width: 200rem;
+  }
+}
+
+.wrapper {
+  @include mixins.wrapper-desktop;
 }
 
 .title {
@@ -89,32 +130,6 @@
     }
   }
 
-  &__clear {
-    width: 100%;
-    margin-top: 2rem;
-    background-color: variables.$blue;
-    border-radius: 10000px;
-    padding: 1.8rem 3.3rem;
-    cursor: pointer;
-    border: 0;
-
-    white-space: nowrap;
-
-    font-size: 1.3rem;
-    color: variables.$white;
-    font-weight: map-get($map: variables.$font-weights, $key: "medium");
-
-    &:active {
-      outline: none;
-      background-color: darken(variables.$blue, 10%);
-    }
-
-    &:disabled {
-      cursor: default;
-      opacity: .5;
-    }
-  }
-
   &__fieldset {
     width: 100%;
     border: 0;
@@ -130,18 +145,5 @@
     letter-spacing: .03rem;
     font-size: 1.8rem;
     margin-bottom: 1rem;
-  }
-
-  &__show-password {
-    border: 0;
-    margin-top: 1rem;
-  }
-
-  &__error-message {
-    font-size: 1.5rem;
-    line-height: 1;
-    min-height: 1.5rem;
-    height: 100%;
-    color: variables.$blue;
   }
 }

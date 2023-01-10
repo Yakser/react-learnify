@@ -3,6 +3,7 @@ import {IUniversityList} from '../../utils/types';
 import styles from './index.module.scss';
 // TODO
 import {Link} from 'react-router-dom';
+import EmptyImage from '../EmptyImage';
 
 interface UniversityCardProps {
 	university: IUniversityList;
@@ -13,7 +14,16 @@ const UniversityCard: React.FC<UniversityCardProps> = ({university}) => {
 	return (
 		<div className={styles['university-card']}>
 			<Link to={LINK_TO_DETAILED}>
-				<img src={university.logo_url} className={styles['university-card__logo']} alt="Логотип университета"/>
+				{
+					university.logo_url ? (
+						<img src={university.logo_url}
+								 className={styles['university-card__logo']}
+								 alt={`Логотип ${university.name}`}/>) :
+						(
+							<EmptyImage/>
+						)
+
+				}
 			</Link>
 			<p className={styles['university-card__name']}>
 				<Link to={LINK_TO_DETAILED}>

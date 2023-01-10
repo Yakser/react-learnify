@@ -1,15 +1,16 @@
 import React from 'react';
 import Header from '../components/Header';
 import {Outlet} from 'react-router-dom';
+import appBackground from '../assets/images/background.png';
 
 const Root = () => {
 	return (
 		<div className={'app'}>
-			<Header/>
-			<h1 className={'visually-hidden'}>Learnify - рекомендательная система для поиска вуза</h1>
-			<div className="app__wrapper">
-				<Outlet/>
+			<div className={'app__bg-container'}>
+				<img src={appBackground} alt="Фон" className="app__bg"/>
 			</div>
+			<Header/>
+			<Outlet/>
 		</div>
 	);
 };

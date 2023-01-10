@@ -2,12 +2,10 @@
 
 .login-button {
   background-color: variables.$white;
-  border: .1rem solid variables.$black;
+  border: .1rem solid variables.$white;
   color: variables.$black;
-  margin-right: 2rem;
-
-  @media screen and (max-width: 500px) {
-    margin-right: 0;
-  }
-
+  border-radius: variables.$infinite-border-radius;
+  font-weight: map-get(variables.$font-weights, medium);
+  font-size: 1.8rem;
+  line-height: 2.5rem;
 }

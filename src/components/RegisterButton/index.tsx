@@ -8,7 +8,7 @@ const RegisterButton = () => {
 	};
 
 	return (
-		<Button className={styles['register-button']} onClick={onClick} text={'Зарегистрироваться'} link={'/register'}/>
+		<Button className={styles['register-button']} onClick={onClick} text={'Регистрация'} link={'/register'}/>
 	);
 };
 

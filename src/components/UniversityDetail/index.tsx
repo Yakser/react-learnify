@@ -6,6 +6,7 @@ import axios from 'axios';
 import {API_URL} from '../../utils/constants';
 import styles from './index.module.scss';
 import Button from '../Button';
+import EmptyImage from '../EmptyImage';
 
 const UniversityDetail = () => {
 	const navigate = useNavigate();
@@ -25,10 +26,21 @@ const UniversityDetail = () => {
 		});
 	}, []);
 	return (
-		<>
-			<Button className={styles['university__go-back-button']} text={'Назад к списку вузов'} onClick={() => navigate(-1)}/>
+		<div className={'wrapper'}>
+			<Button className={styles['university__go-back-button']}
+				text={'Назад к списку вузов'}
+				onClick={() => navigate(-1)}/>
 			<article className={styles.university}>
-				<img src={university.logo_url} className={styles.university__logo} alt="Логотип университета"/>
+				{
+					university.logo_url ? (
+						<img src={university.logo_url}
+								 className={styles.university__logo}
+								 alt={`Логотип ${university.name}`}/>) :
+						(
+							<EmptyImage/>
+						)
+
+				}
 				<h2 className={styles.university__name}>{university.name}</h2>
 				<p className={styles.university__description}>{university.description}</p>
 
@@ -38,7 +50,7 @@ const UniversityDetail = () => {
 					)}
 				</div>
 			</article>
-		</>
+		</div>
 	);
 };
 

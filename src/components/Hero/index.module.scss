@@ -1,0 +1,67 @@
+@use "../../scss/utils/variables";
+@use "../../scss/utils/visually-hidden";
+@use "../../scss/utils/mixins";
+
+.hero {
+
+  &__wrapper {
+    @include mixins.wrapper-desktop;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__image {
+    user-select: none;
+    max-width: 35rem;
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    margin-left: 2rem;
+    margin-top: 4rem;
+  }
+
+  &__title {
+    font-weight: map-get(variables.$font-weights, "bold");
+    font-size: 7.5rem;
+    line-height: 110%;
+    color: variables.$white;
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 1.5;
+    color: variables.$white;
+    max-width: 77rem;
+  }
+
+  &__form {
+    padding: 6.6rem 5.4rem;
+  }
+
+  @media screen and (max-width: 1200px) {
+    &__wrapper {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 2rem;
+    }
+    &__content {
+      margin: 0;
+    }
+    &__image {
+      display: none ;
+    }
+  }
+  @media screen and (max-width: 700px) {
+    &__content {
+      margin-top: 5rem;
+    }
+    &__text, &__title {
+      color: variables.$black;
+    }
+  }
+
+}
+
