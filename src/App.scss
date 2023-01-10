@@ -2,15 +2,28 @@
 @use "./scss/utils/mixins";
 
 .app {
-  background-image: url('./assets/images/hero-background.png');
-  background-repeat: no-repeat;
-  background-size: calc(100vw + 8rem);
-  background-position-x: -8rem;
   min-height: 100vh;
+  position: relative;
+  padding-top: 12rem;
 
-  &__wrapper {
-    padding-top: 17rem;
+  &__bg-container {
+    max-width: 114rem;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
   }
+
+  &__bg {
+    position: absolute;
+    left: -30rem;
+    top: -17rem;
+    width: 180rem;
+    z-index: -1;
+  }
+}
+
+.wrapper {
+  @include mixins.wrapper-desktop;
 }
 
 .title {

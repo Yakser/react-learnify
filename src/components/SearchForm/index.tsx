@@ -11,8 +11,8 @@ interface SearchFormProps {
 
 const SearchForm: React.FC<SearchFormProps> = ({onSearch, onInterestChange, interests, onCityChange, city}) => {
 
-	const ROTATION_COEFFICIENT_X = 10;
-	const ROTATION_COEFFICIENT_Y = 20;
+	const ROTATION_COEFFICIENT_X = 5;
+	const ROTATION_COEFFICIENT_Y = 10;
 
 	const card = useRef<HTMLFormElement>(null);
 

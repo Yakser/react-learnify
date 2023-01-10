@@ -3,26 +3,21 @@
 @use "../../scss/utils/mixins";
 
 .hero {
+
   &__wrapper {
     @include mixins.wrapper-desktop;
     display: flex;
     justify-content: space-between;
   }
-  &__image {
 
+  &__image {
+    user-select: none;
+    max-width: 35rem;
   }
 
   &__content {
     margin-left: 2rem;
-    margin-top: 2rem;
-  }
-
-
-
-  &__image {
-    //position: relative;
-    //top: 18rem;
-    max-width: 35rem;
+    margin-top: 4rem;
   }
 
   &__title {
@@ -30,7 +25,6 @@
     font-size: 7.5rem;
     line-height: 110%;
     color: variables.$white;
-    //margin-right: 8rem;
   }
 
   &__text {

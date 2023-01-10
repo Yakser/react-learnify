@@ -1,4 +1,12 @@
+@use "../../scss/utils/mixins";
+
 .universities {
+  margin-top: 5rem;
+
+  &__wrapper {
+    @include mixins.wrapper-desktop;
+  }
+
   &__list {
     display: flex;
     flex-wrap: wrap;

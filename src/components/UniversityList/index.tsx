@@ -10,17 +10,20 @@ interface UniversityListProps {
 const UniversityList: React.FC<UniversityListProps> = ({universities}) => {
 	return (
 		<div className={styles.universities}>
-			{universities.length > 0 ? (
-				<ul className={styles.universities__list}>
-					{universities.map(item =>
-						<li key={item.id} className={styles.universities__item}>
-							<UniversityCard university={item}/>
-						</li>
-					)}
-				</ul>
-			) : (
-				<p className={styles['universities__not-found']}>Ничего не найдено 😔</p>
-			)}
+			<div className={styles.universities__wrapper}>
+				{universities.length > 0 ? (
+					<ul className={styles.universities__list}>
+						{universities.map(item =>
+							<li key={item.id} className={styles.universities__item}>
+								<UniversityCard university={item}/>
+							</li>
+						)}
+					</ul>
+				) : (
+					<p className={styles['universities__not-found']}>Ничего не найдено 😔</p>
+				)}
+
+			</div>
 		</div>
 
 	);
