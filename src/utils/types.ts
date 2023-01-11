@@ -7,6 +7,16 @@ export interface IUniversityList {
 	short_description: string;
 }
 
+export interface ISpecializationList {
+	id: number;
+	name: string;
+	tags: string[];
+	logo_url: string;
+	short_description: string;
+
+
+}
+
 export interface IUniversityDetail {
 	id: number;
 	name: string;

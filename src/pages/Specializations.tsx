@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {API_URL} from '../utils/constants';
-import {IUniversityList} from '../utils/types';
+import {ISpecializationList} from '../utils/types';
 import axios from 'axios';
-import UniversityList from '../components/UniversityList';
 import Hero from '../components/Hero';
+import SpecializationList from '../components/SpecializationList';
 
-const Main = () => {
-	const [universities, setUniversities] = useState<IUniversityList[]>([]);
+const Specializations = () => {
+	const [specializations, setSpecializations] = useState<ISpecializationList[]>([]);
 	const [interests, setInterests] = React.useState<string[]>([]);
 	const [city, setCity] = React.useState<string>('');
 
@@ -26,10 +26,10 @@ const Main = () => {
 			}
 		};
 
-		axios.get(`${API_URL}/universities/`, config).then((response) => {
+		axios.get(`${API_URL}/specializations/`, config).then((response) => {
 			const {status, data} = response;
 			if (status === 200) {
-				setUniversities(data);
+				setSpecializations(data);
 			}
 		}).catch((error) => {
 			console.error(error);
@@ -37,10 +37,10 @@ const Main = () => {
 	};
 
 	useEffect(() => {
-		axios.get(`${API_URL}/universities/`).then((response) => {
+		axios.get(`${API_URL}/specializations/`).then((response) => {
 			const {status, data} = response;
 			if (status === 200) {
-				setUniversities(data);
+				setSpecializations(data);
 			}
 		}).catch((error) => {
 			console.error(error);
@@ -48,7 +48,7 @@ const Main = () => {
 	}, []);
 
 	return (
-		<main>
+		<>
 			<Hero
 				city={city}
 				interests={interests}
@@ -56,9 +56,9 @@ const Main = () => {
 				onInterestChange={onInterestChange}
 				onSearch={onSearch}
 			/>
-			<UniversityList universities={universities}/>
-		</main>
+			<SpecializationList specializations={specializations}/>
+		</>
 	);
 };
 
-export default Main;
+export default Specializations;

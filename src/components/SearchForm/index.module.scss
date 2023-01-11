@@ -52,26 +52,27 @@
     font-weight: map-get(variables.$font-weights, "medium");
     color: variables.$white;
 
-    background: linear-gradient(118.99deg, #6B53FF 18.14%, #7354FF 43.5%, #5B40FF 67.83%);
+    background-color: variables.$dark-purple;
+    background-image: linear-gradient(120deg, #6B53FF 18%, #7354FF 44%, #5B40FF 68%);
+
     border-radius: variables.$infinite-border-radius;
 
     transition: variables.$transition;
-    transition-property: transform, box-shadow;
-    transition-duration: .25s;
+    transition-property: transform, box-shadow, background-position-x;
+    transition-duration: .15s;
 
     box-shadow: 0 .4rem 0 #1C00CC;
 
     cursor: pointer;
 
     &:hover {
-      transform: translateY(.4rem);
-      box-shadow: 0 0 0 #1C00CC;
+      transform: translateY(.2rem);
+      box-shadow: 0 .2rem 0 #1C00CC;
     }
 
-    &:focus,
-    &:focus-visible {
-      border-color: variables.$black;
-      box-shadow: 0 0 0 .1rem variables.$black;
+    &:active {
+      transform: translateY(.4rem);
+      box-shadow: 0 0 0 #1C00CC;
     }
   }
 

@@ -19,6 +19,7 @@
   }
   @media screen and (max-width: 1200px) {
     position: static;
+    padding-top: 2rem;
 
     &__wrapper {
       flex-direction: column;
