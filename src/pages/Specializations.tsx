@@ -26,7 +26,7 @@ const Specializations = () => {
 			}
 		};
 
-		axios.get(`${API_URL}/specializations/`, config).then((response) => {
+		axios.get(`${API_URL}/universities/specializations/`, config).then((response) => {
 			const {status, data} = response;
 			if (status === 200) {
 				setSpecializations(data);
@@ -37,7 +37,7 @@ const Specializations = () => {
 	};
 
 	useEffect(() => {
-		axios.get(`${API_URL}/specializations/`).then((response) => {
+		axios.get(`${API_URL}/universities/specializations/`).then((response) => {
 			const {status, data} = response;
 			if (status === 200) {
 				setSpecializations(data);
@@ -55,6 +55,9 @@ const Specializations = () => {
 				onCityChange={onCityChange}
 				onInterestChange={onInterestChange}
 				onSearch={onSearch}
+				hero_text={'Введите ваши интересы и город, и узнайте, какая специализация вам подходит'}
+				hero_title={'Поиск специализации'}
+				search_button_text={'Найти'}
 			/>
 			<SpecializationList specializations={specializations}/>
 		</>

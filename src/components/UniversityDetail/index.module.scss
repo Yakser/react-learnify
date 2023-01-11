@@ -1,9 +1,12 @@
 @use "../../scss/utils/variables";
+@use "../../scss/utils/mixins";
 
 .university {
+  @include mixins.wrapper-desktop;
+
+  position: relative;
   border-radius: 5rem;
   padding: 4rem;
-  //background-color: variables.$gray;
 
   background: rgba(variables.$white, .4);
   box-shadow: .8rem 4rem 4rem -.5rem rgba(214, 214, 214, 0.25);
@@ -46,7 +49,7 @@
     background-color: variables.$white;
   }
 
-  &__go-back-button {
-    margin-bottom: 2rem;
+  @media screen and (max-width: 1200px) {
+    margin: 0 2rem;
   }
 }

@@ -55,6 +55,9 @@ const Universities = () => {
 				onCityChange={onCityChange}
 				onInterestChange={onInterestChange}
 				onSearch={onSearch}
+				hero_text={'Введите ваши интересы и город, и узнайте, какой вуз вам подходит'}
+				hero_title={'Поиск вуза'}
+				search_button_text={'Найти вуз'}
 			/>
 			<UniversityList universities={universities}/>
 		</>

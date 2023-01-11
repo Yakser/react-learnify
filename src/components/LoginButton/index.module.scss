@@ -1,11 +1,20 @@
 @use "../../scss/utils/variables";
 
 .login-button {
-  background-color: variables.$white;
   border: .1rem solid variables.$white;
-  color: variables.$black;
   border-radius: variables.$infinite-border-radius;
   font-weight: map-get(variables.$font-weights, medium);
   font-size: 1.8rem;
   line-height: 2.5rem;
+
+  transition: variables.$transition;
+  transition-property: background-color, color;
+  transition-duration: .2s;
+  color: variables.$white;
+  background-color: transparent;
+
+  &:hover {
+    color: variables.$black;
+    background-color: variables.$white;
+  }
 }

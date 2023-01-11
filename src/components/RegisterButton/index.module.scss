@@ -1,14 +1,24 @@
 @use "../../scss/utils/variables";
 
 .register-button {
-  background-color: transparent;
   border: .1rem solid variables.$white;
-  color: variables.$white;
   margin-right: 2rem;
   border-radius: 3.9rem;
   font-weight: map-get(variables.$font-weights, "medium");
   font-size: 1.8rem;
   line-height: 2.5rem;
+  color: variables.$black;
+  background-color: variables.$white;
+
+  transition: variables.$transition;
+  transition-property: background-color, color;
+  transition-duration: .2s;
+
+  &:hover {
+    color: variables.$white;
+    background-color: transparent;
+  }
+
   @media screen and (max-width: 1200px) {
     margin: 0;
   }

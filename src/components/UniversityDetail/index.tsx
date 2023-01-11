@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from 'react';
 
-import {useParams, useNavigate} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import {IUniversityDetail} from '../../utils/types';
 import axios from 'axios';
 import {API_URL} from '../../utils/constants';
 import styles from './index.module.scss';
-import Button from '../Button';
 import EmptyImage from '../EmptyImage';
+import BackButton from '../BackButton';
 
 const UniversityDetail = () => {
-	const navigate = useNavigate();
 	const {universityId} = useParams();
 	const [university, setUniversity] = useState<IUniversityDetail>({
 		city: '', id: 0, logo_url: '', name: '', description: '', tags: []
@@ -26,10 +25,8 @@ const UniversityDetail = () => {
 		});
 	}, []);
 	return (
-		<div className={'wrapper'}>
-			<Button className={styles['university__go-back-button']}
-				text={'Назад к списку вузов'}
-				onClick={() => navigate(-1)}/>
+		<>
+			<BackButton text={'Назад к списку вузов'}/>
 			<article className={styles.university}>
 				{
 					university.logo_url ? (
@@ -50,7 +47,7 @@ const UniversityDetail = () => {
 					)}
 				</div>
 			</article>
-		</div>
+		</>
 	);
 };
 

@@ -1,0 +1,15 @@
+@use "../../scss/utils/variables";
+
+.backButton {
+  margin-left: calc((100% - 114rem) / 2);
+  background-color: rgba(variables.$dark-purple, .7);
+  backdrop-filter: blur(1.8rem);
+  transition-property: background-color;
+  margin-bottom: 2rem;
+  box-shadow: .2rem .4rem 4rem -.5rem rgba(214, 214, 214, .25);
+
+  &:hover {
+    background-color: rgba(variables.$dark-purple, .8);
+
+  }
+}

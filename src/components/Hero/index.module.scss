@@ -12,14 +12,15 @@
 
   &__image {
     user-select: none;
-    max-width: 35rem;
-    width: 100%;
+    width: auto;
+    max-height: 40rem;
     flex-shrink: 0;
   }
 
   &__content {
     margin-left: 2rem;
     margin-top: 4rem;
+    padding-left: 10rem;
   }
 
   &__title {
@@ -46,9 +47,12 @@
       flex-direction: column;
       align-items: center;
       padding: 0 2rem;
+      margin-top: 2rem;
     }
     &__content {
       margin: 0;
+      padding: 0;
+      text-align: right;
     }
     &__image {
       display: none ;
@@ -57,9 +61,14 @@
   @media screen and (max-width: 700px) {
     &__content {
       margin-top: 5rem;
+      text-align: center;
     }
     &__text, &__title {
       color: variables.$black;
+    }
+
+    &__title {
+      font-size: 5rem;
     }
   }
 

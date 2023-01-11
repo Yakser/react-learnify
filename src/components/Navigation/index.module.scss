@@ -11,22 +11,32 @@
   border-radius: variables.$infinite-border-radius;
 
   margin-left: 5rem;
-  padding: 1.2rem 3rem;
 
   background: rgba(variables.$white, .1);
   backdrop-filter: blur(.5rem);
 
   &__link {
+    padding: 1.2rem 3rem;
     cursor: pointer;
     font-size: 1.8rem;
     font-weight: map-get(variables.$font-weights, "medium");
     letter-spacing: .15rem;
     color: variables.$white;
     white-space: nowrap;
+
+    transition: variables.$transition;
+    transition-property: opacity;
+    transition-duration: .1s;
+
     &:visited, &:link {
-        color: variables.$white;
+      color: variables.$white;
+    }
+
+    &:hover {
+      opacity: .7;
     }
   }
+
   @media screen and (max-width: 1200px) {
     margin: 0;
   }

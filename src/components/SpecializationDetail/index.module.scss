@@ -1,0 +1,61 @@
+@use "../../scss/utils/variables";
+@use "../../scss/utils/mixins";
+
+.specialization {
+  @include mixins.wrapper-desktop;
+
+  border-radius: 5rem;
+  padding: 4rem;
+
+  background: rgba(variables.$white, .4);
+  box-shadow: .8rem 4rem 4rem -.5rem rgba(214, 214, 214, 0.25);
+  backdrop-filter: blur(1.85rem);
+
+  &__name {
+    font-weight: map-get(variables.$font-weights, bold);
+    font-size: 4rem;
+  }
+
+  &__universityName {
+    font-size: 2.4rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    font-weight: map-get(variables.$font-weights, medium);
+  }
+
+  &__logo, &__empty-image-ico {
+    display: block;
+    max-width: 100%;
+    max-height: 35rem;
+    border-radius: 4rem;
+    margin: 0 auto 4rem;
+  }
+
+  &__empty-image-ico {
+    max-width: 20rem;
+  }
+
+  &__description {
+    font-size: 2.4rem;
+    line-height: 1.4;
+    max-width: 65ch;
+    margin: 2rem auto;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 1.8rem;
+  }
+
+  &__tag {
+    padding: .5rem 1rem;
+    border-radius: 5rem;
+    background-color: variables.$white;
+  }
+
+  @media screen and (max-width: 1200px) {
+    margin: 0 2rem;
+  }
+}
