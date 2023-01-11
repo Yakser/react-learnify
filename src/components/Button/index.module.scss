@@ -12,18 +12,5 @@
 
   background-color: variables.$light-purple;
   transition: variables.$transition;
-  transition-property: border-color, box-shadow;
-  transition-duration: .25s;
-
   cursor: pointer;
-
-  &:hover {
-    border-color: variables.$dark-purple;
-  }
-
-  &:focus,
-  &:focus-visible {
-    border-color: variables.$dark-purple;
-    box-shadow: 0 0 0 .1rem variables.$dark-purple;
-  }
 }

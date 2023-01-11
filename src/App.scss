@@ -46,10 +46,6 @@
   }
 }
 
-.wrapper {
-  @include mixins.wrapper-desktop;
-}
-
 .title {
   font-weight: map-get(variables.$font-weights, bold);
   font-size: 5rem;

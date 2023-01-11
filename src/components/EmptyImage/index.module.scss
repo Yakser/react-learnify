@@ -1,7 +1,13 @@
+@use "../../scss/utils/variables";
+
 .emptyImage {
   display: block;
   max-width: 20rem;
   max-height: 35rem;
   border-radius: 4rem;
   margin: 0 auto 4rem;
+
+  path {
+    fill: rgba(variables.$black, .2);
+  }
 }

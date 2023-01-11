@@ -5,7 +5,7 @@ import axios from 'axios';
 import UniversityList from '../components/UniversityList';
 import Hero from '../components/Hero';
 
-const Main = () => {
+const Universities = () => {
 	const [universities, setUniversities] = useState<IUniversityList[]>([]);
 	const [interests, setInterests] = React.useState<string[]>([]);
 	const [city, setCity] = React.useState<string>('');
@@ -48,17 +48,20 @@ const Main = () => {
 	}, []);
 
 	return (
-		<main>
+		<>
 			<Hero
 				city={city}
 				interests={interests}
 				onCityChange={onCityChange}
 				onInterestChange={onInterestChange}
 				onSearch={onSearch}
+				hero_text={'Введите ваши интересы и город, и узнайте, какой вуз вам подходит'}
+				hero_title={'Поиск вуза'}
+				search_button_text={'Найти вуз'}
 			/>
 			<UniversityList universities={universities}/>
-		</main>
+		</>
 	);
 };
 
-export default Main;
+export default Universities;

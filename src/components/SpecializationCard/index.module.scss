@@ -1,21 +1,14 @@
 @use "../../scss/utils/variables";
-@use "../../scss/utils/mixins";
 
-.university {
-  @include mixins.wrapper-desktop;
-
-  position: relative;
+.specializationCard {
   border-radius: 5rem;
   padding: 4rem;
-
-  background: rgba(variables.$white, .4);
-  box-shadow: .8rem 4rem 4rem -.5rem rgba(214, 214, 214, 0.25);
-  backdrop-filter: blur(1.85rem);
+  background-color: variables.$gray;
 
   &__name {
     font-weight: map-get(variables.$font-weights, bold);
     font-size: 4rem;
-    margin-bottom: 2rem;
+    margin-bottom: .5rem;
   }
 
   &__logo, &__empty-image-ico {
@@ -35,6 +28,12 @@
     line-height: 1.4;
     margin-bottom: 2rem;
   }
+  &__universityName {
+    font-size: 2.4rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    font-weight: map-get(variables.$font-weights, medium);
+  }
 
   &__tags {
     display: flex;
@@ -49,7 +48,9 @@
     background-color: variables.$white;
   }
 
-  @media screen and (max-width: 1200px) {
-    margin: 0 2rem;
+  @media screen and (max-width: 500px) {
+    &__name {
+      font-size: 3rem;
+    }
   }
 }
