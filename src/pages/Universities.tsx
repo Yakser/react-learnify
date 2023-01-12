@@ -8,6 +8,7 @@ import {capitalize} from '../utils/helpers';
 
 const Universities = () => {
 	const [universities, setUniversities] = useState<IUniversityList[]>([]);
+	const [isLoading, setIsLoading] = React.useState<boolean>(true);
 	const [tags, setTags] = React.useState<string[]>([]);
 	const [tag, setTag] = React.useState<string>('');
 	const [city, setCity] = React.useState<string>('');
@@ -47,6 +48,8 @@ const Universities = () => {
 	}, []);
 
 	const search = () => {
+		setIsLoading(true);
+
 		const config = {
 			params: {
 				city: city,
@@ -59,8 +62,10 @@ const Universities = () => {
 			if (status === 200) {
 				setUniversities(data);
 			}
+			setIsLoading(false);
 		}).catch((error) => {
 			console.error(error);
+			setIsLoading(false);
 		});
 	};
 
@@ -80,7 +85,7 @@ const Universities = () => {
 				search_button_text={'Найти вуз'}
 				onDeleteTagByIndex={onDeleteTagByIndex}
 			/>
-			<UniversityList universities={universities}/>
+			<UniversityList universities={universities} isLoading={isLoading}/>
 		</>
 	);
 };
