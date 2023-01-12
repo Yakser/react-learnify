@@ -8,19 +8,7 @@
   background-color: variables.$gray;
   border-radius: variables.$infinite-border-radius;
 
-  //animation: fadeIn .2s ease-in-out;
-  //animation-iteration-count: 1;
-
   cursor: default;
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
 
   &__name {
     font-size: 1.4rem;
@@ -28,7 +16,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0.6em 0 0.6em 1.2rem;
-
   }
 
   &__deleteButton {

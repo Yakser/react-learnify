@@ -8,6 +8,8 @@
   }
 
   &__list, &__contentLoaders {
+    @include mixins.wrapper-desktop;
+
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;

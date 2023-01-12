@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './index.module.scss';
+import {addEllipsis} from '../../../utils/helpers';
 
 
 interface TagProps {
@@ -16,7 +17,7 @@ const Tag: React.FC<TagProps> = ({tag, onDeleteTagByIndex, index}) => {
 	return (
 		<div className={styles.tag}>
 			<p className={styles.tag__name}>
-				{tag}
+				{addEllipsis(tag, 65)}
 			</p>
 			<span className={styles.tag__deleteButton} onClick={onDeleteTag}>
 				{/* TODO USE SPRITES */}
