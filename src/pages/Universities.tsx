@@ -24,8 +24,9 @@ const Universities = () => {
 	};
 
 	const onAddTag = (event: React.KeyboardEvent<HTMLInputElement>) => {
-		if (event.key === 'Enter' && tag !== '') {
-			setTags([...tags, tag.trim()]);
+		const cleanedTag = tag.trim();
+		if (event.key === 'Enter' && cleanedTag !== '') {
+			setTags([...tags, cleanedTag]);
 			setTag('');
 		}
 	};
