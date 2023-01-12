@@ -23,5 +23,11 @@ export const get_list_of_content_loaders = (count = 4) => {
 		);
 	}
 	return content_loaders;
+};
 
+export const addEllipsis = (string: string, length: number) => {
+	if (string.length > length) {
+		return `${string.slice(0, length - 3).trim()}...`;
+	}
+	return string;
 };
