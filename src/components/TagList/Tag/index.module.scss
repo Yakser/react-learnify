@@ -1,0 +1,46 @@
+@use "../../../scss/utils/variables";
+
+.tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: variables.$gray;
+  border-radius: variables.$infinite-border-radius;
+
+  //animation: fadeIn .2s ease-in-out;
+  //animation-iteration-count: 1;
+
+  cursor: default;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  &__name {
+    font-size: 1.4rem;
+    max-width: 65ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.6em 0 0.6em 1.2rem;
+
+  }
+
+  &__deleteButton {
+    padding: 0.6em;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    width: 3.2rem;
+    height: 3.2rem;
+
+    path {
+      fill: variables.$red;
+    }
+  }
+}
