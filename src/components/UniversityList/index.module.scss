@@ -7,13 +7,13 @@
     @include mixins.wrapper-desktop;
   }
 
-  &__list {
+  &__list, &__contentLoaders {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
   }
 
-  &__item {
+  &__item, &__contentLoaders svg {
     width: calc(50% - 2rem);
     margin: 1rem;
   }
@@ -25,11 +25,11 @@
 
   @media screen and (max-width: 1024px) {
     padding: 0 2rem;
-    &__list {
+    &__list, &__contentLoaders {
       flex-direction: column;
       align-items: center;
     }
-    &__item {
+    &__item, &__contentLoaders svg {
       width: 100%;
       margin: 2rem 0;
     }

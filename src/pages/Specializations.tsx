@@ -8,7 +8,7 @@ import {capitalize} from '../utils/helpers';
 
 const Specializations = () => {
 	const [specializations, setSpecializations] = useState<ISpecializationList[]>([]);
-
+	const [isLoading, setIsLoading] = React.useState<boolean>(true);
 	const [tags, setTags] = React.useState<string[]>([]);
 	const [tag, setTag] = React.useState<string>('');
 	const [city, setCity] = React.useState<string>('');
@@ -48,6 +48,8 @@ const Specializations = () => {
 	}, []);
 
 	const search = () => {
+		setIsLoading(true);
+
 		const config = {
 			params: {
 				city: city,
@@ -60,8 +62,10 @@ const Specializations = () => {
 			if (status === 200) {
 				setSpecializations(data);
 			}
+			setIsLoading(false);
 		}).catch((error) => {
 			console.error(error);
+			setIsLoading(false);
 		});
 	};
 
@@ -81,7 +85,7 @@ const Specializations = () => {
 				onAddTag={onAddTag}
 				onDeleteTagByIndex={onDeleteTagByIndex}
 			/>
-			<SpecializationList specializations={specializations}/>
+			<SpecializationList specializations={specializations} isLoading={isLoading}/>
 		</>
 	);
 };
