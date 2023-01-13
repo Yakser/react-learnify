@@ -1,0 +1,38 @@
+@use "../../scss/utils/variables";
+
+.departmentCard {
+  padding: 2rem;
+
+  border-radius: 5rem;
+  border: .1rem solid variables.$black;
+
+  transition: variables.$transition;
+  transition-property: background-color;
+  transition-duration: .15s;
+
+  cursor: pointer;
+
+  &__name {
+    font-weight: map-get(variables.$font-weights, bold);
+    font-size: 2rem;
+    border-bottom: .1rem solid transparent;
+    width: max-content;
+    transition: variables.$transition;
+    transition-property: border-bottom-color;
+    transition-duration: .15s;
+  }
+
+  &:hover {
+    background-color: rgba(variables.$light-purple, .4);
+    .departmentCard__name {
+      border-bottom-color: variables.$black;
+    }
+
+  }
+
+  @media screen and (max-width: 500px) {
+    &__name {
+      font-size: 1.6rem;
+    }
+  }
+}
