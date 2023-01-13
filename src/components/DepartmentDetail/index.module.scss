@@ -73,5 +73,6 @@
 
   @media screen and (max-width: 1200px) {
     margin: 0 2rem;
+    max-width: calc(100% - 4rem);
   }
 }

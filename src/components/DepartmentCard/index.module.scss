@@ -1,6 +1,7 @@
 @use "../../scss/utils/variables";
 
 .departmentCard {
+  max-width: 100%;
   padding: 2rem;
 
   border-radius: 5rem;
@@ -16,6 +17,7 @@
     font-weight: map-get(variables.$font-weights, bold);
     font-size: 2rem;
     border-bottom: .1rem solid transparent;
+    max-width: 100%;
     width: max-content;
     transition: variables.$transition;
     transition-property: border-bottom-color;
@@ -24,8 +26,9 @@
 
   &:hover {
     background-color: rgba(variables.$light-purple, .4);
+
     .departmentCard__name {
-      border-bottom-color: variables.$black;
+      text-decoration: underline;
     }
 
   }
