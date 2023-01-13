@@ -11,7 +11,9 @@ const BackButton: React.FC<BackButtonProps> = ({text}) => {
 	const navigate = useNavigate();
 
 	return (
-		<Button className={styles.backButton} text={text} onClick={() => navigate(-1)}/>
+		<div className={styles.backButton}>
+			<Button className={styles.backButton__button} text={text} onClick={() => navigate(-1)}/>
+		</div>
 	);
 };
 
