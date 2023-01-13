@@ -12,7 +12,8 @@ import Root from './pages/Root';
 import UniversityDetail from './components/UniversityDetail';
 import Error from './pages/Error';
 import SpecializationDetail from './components/SpecializationDetail';
-import Calculator from './pages/Calculator';
+import CalculatorPage from './pages/CalculatorPage';
+import DepartmentDetail from './components/DepartmentDetail';
 
 const router = createBrowserRouter([
 	{
@@ -37,8 +38,12 @@ const router = createBrowserRouter([
 				element: <SpecializationDetail/>,
 			},
 			{
+				path: '/departments/:departmentId',
+				element: <DepartmentDetail/>,
+			},
+			{
 				path: '/calculator',
-				element: <Calculator/>,
+				element: <CalculatorPage/>,
 			},
 			{
 				path: 'login',
@@ -50,8 +55,8 @@ const router = createBrowserRouter([
 			},
 		],
 	},
-
 ]);
+
 const App = () => {
 	return (
 		<RouterProvider router={router}/>

@@ -1,3 +1,21 @@
+export interface IDepartmentList {
+	'id': number;
+	'name': string;
+	'code': string;
+	'tags': string[];
+}
+
+export interface IDepartmentDetail {
+	'id': number;
+	'name': string;
+	'code': string;
+	'logo_url': string;
+	'university_name': string;
+	'city': string;
+	'tags': string[];
+	specializations: ISpecializationList[];
+}
+
 export interface IUniversityList {
 	id: number;
 	name: string;
@@ -15,6 +33,7 @@ export interface IUniversityDetail {
 	city: string;
 	logo_url: string;
 	description: string;
+	departments: IDepartmentList[];
 }
 
 export interface ISpecializationList {

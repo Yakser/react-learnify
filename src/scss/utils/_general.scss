@@ -43,12 +43,10 @@ main {
 
 ::selection {
   color: variables.$white;
-  background-color: variables.$blue;
+  background-color: variables.$dark-purple;
 }
 
-a:visited, a:link {
-  color: inherit;
-}
+
 
 @media screen and (max-width: 500px) {
   html {

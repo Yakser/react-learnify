@@ -1,0 +1,13 @@
+@use "../../scss/utils/variables";
+@use "../../scss/utils/mixins";
+
+.calculator {
+
+  &__wrapper {
+    @include mixins.wrapper-desktop;
+
+    font-size: 4rem;
+    font-weight: map-get(variables.$font-weights, bold);
+    text-align: center;
+  }
+}

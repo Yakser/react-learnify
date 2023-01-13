@@ -3,11 +3,11 @@
 .specializations {
   margin-top: 5rem;
 
-  &__wrapper {
+  &__wrapper, &__contentLoaders {
     @include mixins.wrapper-desktop;
   }
 
-  &__list, &__contentLoaders {
+  &__list {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
