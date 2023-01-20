@@ -18,5 +18,3 @@
 ### Run project
 
 🚀 Run project via `yarn dev`
-
-### Replace ugettext with gettext in taggit serializer
