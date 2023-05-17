@@ -3,6 +3,7 @@
 @use "../../scss/utils/mixins";
 
 .hero {
+  padding-bottom: 5rem;
 
   &__wrapper {
     @include mixins.wrapper-desktop;
