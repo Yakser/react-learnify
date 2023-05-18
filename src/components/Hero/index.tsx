@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './index.module.scss';
-import boyImage from '../assets/images/boy.png';
+import boyImage from '../../assets/images/boy.png';
 import SearchForm from '../SearchForm';
 
 interface IHeroProps {
