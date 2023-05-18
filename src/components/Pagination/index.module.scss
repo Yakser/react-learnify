@@ -20,6 +20,8 @@
     transition: variables.$transition;
     transition-property: opacity, background-color, color;
     background-color: transparent;
+    user-select: none;
+
     &_active {
       background-color: variables.$purple;
       color: variables.$white;

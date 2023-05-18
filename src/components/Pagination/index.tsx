@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './index.module.scss';
 
 interface PaginationProps {
@@ -15,6 +15,28 @@ const Pagination: React.FC<PaginationProps> = ({
 	showPage
 }) => {
 	const pagesCount = Math.ceil(totalCount / limit);
+	const [indexesToShow, setIndexesToShow] = useState<number[]>([]);
+
+	useEffect(() => {
+		const pagesToShow = 7;
+
+		if (pagesCount <= pagesToShow) {
+			const tmp = Array(pagesCount).fill(null).map((_, i) => i);
+			setIndexesToShow(tmp);
+		} else {
+			const inds = [];
+			let l = Math.max(0, currentPageIndex - Math.floor(pagesToShow / 2));
+			let rest = pagesToShow - (currentPageIndex - l);
+			const r = Math.min(pagesCount, currentPageIndex + rest);
+			rest = pagesToShow - (r - l);
+			l = Math.max(0, l - rest);
+			for (let i = l; i < r; i++) {
+				inds.push(i);
+			}
+			setIndexesToShow(inds);
+		}
+	}, [pagesCount, currentPageIndex]);
+
 
 	const onPageChange = (index: number) => {
 		if (0 <= index && index < pagesCount) {
@@ -29,16 +51,16 @@ const Pagination: React.FC<PaginationProps> = ({
 				onClick={() => onPageChange(currentPageIndex - 1)}
 				className={`${styles.pagination__item} ${currentPageIndex <= 0 && styles.pagination__item_disabled}`}
 			>
-				Предыдущая
+				←
 			</li>
 			{
-				Array(pagesCount).fill(null).map((_, index) => (
+				indexesToShow.map(item => (
 						<li
-							key={index}
-							onClick={() => onPageChange(index)}
-							className={`${styles.pagination__item} ${index == currentPageIndex && styles.pagination__item_active}`}
+							key={item}
+							onClick={() => onPageChange(item)}
+							className={`${styles.pagination__item} ${item == currentPageIndex && styles.pagination__item_active}`}
 						>
-							{index + 1}
+							{item + 1}
 						</li>
 					)
 				)
@@ -48,7 +70,7 @@ const Pagination: React.FC<PaginationProps> = ({
 				onClick={() => onPageChange(currentPageIndex + 1)}
 				className={`${styles.pagination__item} ${currentPageIndex + 1 === pagesCount && styles.pagination__item_disabled}`}
 			>
-				Следующая
+				→
 			</li>
 		</ul>
 	);
