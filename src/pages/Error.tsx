@@ -1,5 +1,5 @@
 import React from 'react';
-import appBackground from '../../../next-learnify/public/images/background.png';
+import appBackground from '../assets/images/background.png';
 import Header from '../components/Header';
 
 const Error = () => {
