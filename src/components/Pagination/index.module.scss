@@ -1,0 +1,34 @@
+@use "../../scss/utils/variables";
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  margin: 0 auto;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: variables.$infinite-border-radius;
+  background-color: variables.$gray;
+
+
+  &__item {
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    transition: variables.$transition;
+    transition-property: opacity, background-color, color;
+    background-color: transparent;
+    user-select: none;
+
+    &_active {
+      background-color: variables.$purple;
+      color: variables.$white;
+    }
+
+    &_disabled {
+      opacity: .2;
+    }
+  }
+}
