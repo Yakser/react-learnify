@@ -22,9 +22,15 @@
     padding: 0.6em;
     cursor: pointer;
     background-color: transparent;
-    border: 0;
-    width: 3.2rem;
-    height: 3.2rem;
+    border: .2rem solid transparent;
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: variables.$infinite-border-radius;
+
+    &:focus-visible {
+      border-color: variables.$red;
+      outline: none;
+    }
 
     path {
       fill: variables.$red;

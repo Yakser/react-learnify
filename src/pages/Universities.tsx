@@ -40,36 +40,33 @@ const Universities = () => {
 
 	const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		search();
+		if (currentPageIndex !== 0) {
+			setCurrentPageIndex(0);
+		} else {
+			search();
+		}
 	};
 	const onSearchClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
-		search();
+		if (currentPageIndex !== 0) {
+			setCurrentPageIndex(0);
+		} else {
+			search();
+		}
 	};
 
 	useEffect(() => {
 		search();
-		fetchPaginationInfo();
-	}, []);
+	}, [tags]);
 
-	const fetchPaginationInfo = () => {
+	useEffect(() => {
 		fetchPaginationLimit();
-		fetchUniversitiesCount();
-	};
+	}, []);
 
 	const fetchPaginationLimit = () => {
 		axios.get(`${API_URL}/universities/limit`).then(
 			(response) => {
 				setPaginationLimit(response.data['limit']);
-			}
-		).catch((error) => {
-			console.log(error);
-		});
-	};
-	const fetchUniversitiesCount = () => {
-		axios.get(`${API_URL}/universities/count`).then(
-			(response) => {
-				setTotalCount(response.data['count']);
 			}
 		).catch((error) => {
 			console.log(error);
@@ -94,6 +91,7 @@ const Universities = () => {
 			const {status, data} = response;
 			if (status === 200) {
 				setUniversities(data['results']);
+				setTotalCount(data['count']);
 			}
 			setIsLoading(false);
 		}).catch((error) => {
@@ -118,15 +116,20 @@ const Universities = () => {
 				search_button_text={'Найти вуз'}
 				onDeleteTagByIndex={onDeleteTagByIndex}
 			/>
-			<Pagination limit={paginationLimit}
-						totalCount={totalCount}
-						currentPageIndex={currentPageIndex}
-						showPage={setCurrentPageIndex}/>
+			{
+				Math.ceil(totalCount / paginationLimit) > 1 && <Pagination limit={paginationLimit}
+																		   totalCount={totalCount}
+																		   currentPageIndex={currentPageIndex}
+																		   showPage={setCurrentPageIndex}/>
+			}
+
 			<UniversityList universities={universities} isLoading={isLoading}/>
-			<Pagination limit={paginationLimit}
-						totalCount={totalCount}
-						currentPageIndex={currentPageIndex}
-						showPage={setCurrentPageIndex}/>
+			{
+				Math.ceil(totalCount / paginationLimit) > 1 && <Pagination limit={paginationLimit}
+																		   totalCount={totalCount}
+																		   currentPageIndex={currentPageIndex}
+																		   showPage={setCurrentPageIndex}/>
+			}
 		</>
 	);
 };
