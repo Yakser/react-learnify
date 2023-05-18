@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import {Outlet} from 'react-router-dom';
-import appBackground from '../../../next-learnify/public/images/background.png';
+import appBackground from '../assets/images/background.png';
 import ScrollToTop from '../components/ScrollToTop';
 
 const Root = () => {
