@@ -5,6 +5,7 @@ import axios from 'axios';
 import Hero from '../components/Hero';
 import SpecializationList from '../components/SpecializationList';
 import {capitalize} from '../utils/helpers';
+import Pagination from '../components/Pagination';
 
 const Specializations = () => {
 	const [specializations, setSpecializations] = useState<ISpecializationList[]>([]);
@@ -12,6 +13,9 @@ const Specializations = () => {
 	const [tags, setTags] = React.useState<string[]>([]);
 	const [tag, setTag] = React.useState<string>('');
 	const [city, setCity] = React.useState<string>('');
+	const [paginationLimit, setPaginationLimit] = React.useState<number>(6);
+	const [totalCount, setTotalCount] = React.useState<number>(0);
+	const [currentPageIndex, setCurrentPageIndex] = React.useState<number>(0);
 
 	const onDeleteTagByIndex = (index: number) => {
 		const newTags = [...tags];
@@ -36,16 +40,42 @@ const Specializations = () => {
 
 	const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		search();
+		if (currentPageIndex !== 0) {
+			setCurrentPageIndex(0);
+		} else {
+			search();
+		}
 	};
 	const onSearchClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
-		search();
+		if (currentPageIndex !== 0) {
+			setCurrentPageIndex(0);
+		} else {
+			search();
+		}
 	};
 
 	useEffect(() => {
 		search();
+	}, [tags]);
+
+	useEffect(() => {
+		fetchPaginationLimit();
 	}, []);
+
+	// fixme: code duplicate
+	const fetchPaginationLimit = () => {
+		axios.get(`${API_URL}/universities/limit`).then(
+			(response) => {
+				setPaginationLimit(response.data['limit']);
+			}
+		).catch((error) => {
+			console.log(error);
+		});
+	};
+	useEffect(() => {
+		search();
+	}, [currentPageIndex]);
 
 	const search = () => {
 		setIsLoading(true);
@@ -60,7 +90,8 @@ const Specializations = () => {
 		axios.get(`${API_URL}/universities/specializations`, config).then((response) => {
 			const {status, data} = response;
 			if (status === 200) {
-				setSpecializations(data);
+				setSpecializations(data['results']);
+				setTotalCount(data['count']);
 			}
 			setIsLoading(false);
 		}).catch((error) => {
@@ -85,7 +116,19 @@ const Specializations = () => {
 				onAddTag={onAddTag}
 				onDeleteTagByIndex={onDeleteTagByIndex}
 			/>
+			{
+				Math.ceil(totalCount / paginationLimit) > 1 && <Pagination limit={paginationLimit}
+																		   totalCount={totalCount}
+																		   currentPageIndex={currentPageIndex}
+																		   showPage={setCurrentPageIndex}/>
+			}
 			<SpecializationList specializations={specializations} isLoading={isLoading}/>
+			{
+				Math.ceil(totalCount / paginationLimit) > 1 && <Pagination limit={paginationLimit}
+																		   totalCount={totalCount}
+																		   currentPageIndex={currentPageIndex}
+																		   showPage={setCurrentPageIndex}/>
+			}
 		</>
 	);
 };
