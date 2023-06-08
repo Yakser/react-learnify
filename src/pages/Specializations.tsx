@@ -44,11 +44,7 @@ const Specializations = () => {
 
 	const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		if (currentPageIndex !== 0) {
-			setCurrentPageIndex(0);
-		} else {
-			search();
-		}
+		search();
 	};
 	const onSearchClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
