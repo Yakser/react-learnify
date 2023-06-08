@@ -16,7 +16,8 @@ interface IHeroProps {
 	search_button_text: string;
 	onAddTag: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 	onDeleteTagByIndex: (index: number) => void;
-
+	name: string;
+	onNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Hero: React.FC<IHeroProps> = ({
@@ -31,7 +32,9 @@ const Hero: React.FC<IHeroProps> = ({
 	hero_text,
 	search_button_text,
 	onAddTag,
-	onDeleteTagByIndex
+	onDeleteTagByIndex,
+	name,
+	onNameChange,
 }) => {
 	return (
 		<section className={styles.hero}>
@@ -50,7 +53,10 @@ const Hero: React.FC<IHeroProps> = ({
 						tag={tag}
 						city={city}
 						search_button_text={search_button_text}
-						onDeleteTagByIndex={onDeleteTagByIndex}/>
+						onDeleteTagByIndex={onDeleteTagByIndex}
+						name={name}
+						onNameChange={onNameChange}
+					/>
 				</div>
 			</div>
 		</section>
