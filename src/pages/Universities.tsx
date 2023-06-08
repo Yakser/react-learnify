@@ -13,6 +13,7 @@ const Universities = () => {
 	const [tags, setTags] = React.useState<string[]>([]);
 	const [tag, setTag] = React.useState<string>('');
 	const [city, setCity] = React.useState<string>('');
+	const [name, setName] = React.useState<string>('');
 	const [paginationLimit, setPaginationLimit] = React.useState<number>(6);
 	const [totalCount, setTotalCount] = React.useState<number>(0);
 	const [currentPageIndex, setCurrentPageIndex] = React.useState<number>(0);
@@ -38,6 +39,10 @@ const Universities = () => {
 		setCity(capitalize(event.target.value));
 	};
 
+	const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setName(event.target.value);
+	};
+
 	const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		if (currentPageIndex !== 0) {
@@ -61,6 +66,8 @@ const Universities = () => {
 
 	useEffect(() => {
 		fetchPaginationLimit();
+		const page = +(localStorage.getItem('universities_page') || 0);
+		setCurrentPageIndex(page);
 	}, []);
 
 	const fetchPaginationLimit = () => {
@@ -75,6 +82,7 @@ const Universities = () => {
 
 	useEffect(() => {
 		search();
+		localStorage.setItem('universities_page', currentPageIndex.toString());
 	}, [currentPageIndex]);
 
 	const search = () => {
@@ -83,10 +91,10 @@ const Universities = () => {
 		const config = {
 			params: {
 				city: city,
-				tags: tags.join(',')
+				tags: tags.join(','),
+				name__icontains: name,
 			}
 		};
-		console.log(`limit=${paginationLimit}&offset=${currentPageIndex * paginationLimit}`);
 		axios.get(`${API_URL}/universities/?limit=${paginationLimit}&offset=${currentPageIndex * paginationLimit}`, config).then((response) => {
 			const {status, data} = response;
 			if (status === 200) {
@@ -115,6 +123,8 @@ const Universities = () => {
 				hero_title={'Поиск вуза'}
 				search_button_text={'Найти вуз'}
 				onDeleteTagByIndex={onDeleteTagByIndex}
+				name={name}
+				onNameChange={onNameChange}
 			/>
 			{
 				Math.ceil(totalCount / paginationLimit) > 1 && <Pagination limit={paginationLimit}

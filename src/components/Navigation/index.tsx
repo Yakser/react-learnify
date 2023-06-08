@@ -12,9 +12,9 @@ const Navigation = () => {
 			<Link to={'/specializations'} className={styles.navigation__link}>
 				Поиск специальности
 			</Link>
-			<Link to={'/calculator'} className={styles.navigation__link}>
-				Калькулятор
-			</Link>
+			{/*<Link to={'/calculator'} className={styles.navigation__link}>*/}
+			{/*	Калькулятор*/}
+			{/*</Link>*/}
 		</nav>
 	);
 };

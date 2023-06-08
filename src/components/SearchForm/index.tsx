@@ -13,6 +13,8 @@ interface SearchFormProps {
 	search_button_text: string;
 	onAddTag: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 	onDeleteTagByIndex: (index: number) => void;
+	name: string;
+	onNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const SearchForm: React.FC<SearchFormProps> = ({
@@ -25,7 +27,9 @@ const SearchForm: React.FC<SearchFormProps> = ({
 	city,
 	search_button_text,
 	onAddTag,
-	onDeleteTagByIndex
+	onDeleteTagByIndex,
+	name,
+	onNameChange
 }) => {
 	return (
 		<form
@@ -33,29 +37,48 @@ const SearchForm: React.FC<SearchFormProps> = ({
 			className={styles.searchForm}
 		>
 
-			<TagList tags={tags} onDeleteTagByIndex={onDeleteTagByIndex}/>
-
-			<fieldset>
-				<label className={styles.searchForm__label}>
-					<span className="visually-hidden">Введите ваши интересы по одному</span>
-					<input className={styles.searchForm__input}
-						   type="text" name={'tags'}
-						   value={tag}
-						   onKeyDown={onAddTag}
-						   onChange={onTagChange}
-						   placeholder={'Ваши интересы'}
+			<label className={`${styles.searchForm__label} ${styles.searchForm__label_name}`}>
+				<span className="visually-hidden">Название</span>
+				<input className={styles.searchForm__input}
+					   type="text"
+					   name="name"
+					   value={name}
+					   onChange={onNameChange}
+					   placeholder={'Название'}
+				/>
+			</label>
+			{
+				tags.length > 0 && <div className={styles.searchForm__tags}>
+					<TagList tags={tags}
+							 onDeleteTagByIndex={onDeleteTagByIndex}
 					/>
-				</label>
-				<label className={styles.searchForm__label}>
-					<span className="visually-hidden">Город поступления</span>
-					<input className={styles.searchForm__input}
-						   type="text" name={'city'}
-						   value={city}
-						   onChange={onCityChange}
-						   placeholder={'Город поступления'}/>
-				</label>
-				<button onClick={onSearchClick} className={styles.searchForm__button}>{search_button_text}</button>
-			</fieldset>
+				</div>
+			}
+
+			<label className={styles.searchForm__label}>
+				<span className="visually-hidden">Введите ваши интересы по одному</span>
+				<input className={styles.searchForm__input}
+					   type="text"
+					   name={'tags'}
+					   value={tag}
+					   onKeyDown={onAddTag}
+					   onChange={onTagChange}
+					   placeholder={'Ваши интересы'}
+				/>
+				<span className={styles.searchForm__text}>
+						Нажмите Enter, чтобы добавить
+					</span>
+			</label>
+			<label className={styles.searchForm__label}>
+				<span className="visually-hidden">Город поступления</span>
+				<input className={styles.searchForm__input}
+					   type="text"
+					   name={'city'}
+					   value={city}
+					   onChange={onCityChange}
+					   placeholder={'Город поступления'}/>
+			</label>
+			<button onClick={onSearchClick} className={styles.searchForm__button}>{search_button_text}</button>
 		</form>
 	);
 };

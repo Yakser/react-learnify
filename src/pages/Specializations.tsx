@@ -13,6 +13,7 @@ const Specializations = () => {
 	const [tags, setTags] = React.useState<string[]>([]);
 	const [tag, setTag] = React.useState<string>('');
 	const [city, setCity] = React.useState<string>('');
+	const [name, setName] = React.useState<string>('');
 	const [paginationLimit, setPaginationLimit] = React.useState<number>(6);
 	const [totalCount, setTotalCount] = React.useState<number>(0);
 	const [currentPageIndex, setCurrentPageIndex] = React.useState<number>(0);
@@ -35,6 +36,9 @@ const Specializations = () => {
 	};
 	const onCityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setCity(capitalize(event.target.value));
+	};
+	const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setName(event.target.value);
 	};
 
 
@@ -61,9 +65,10 @@ const Specializations = () => {
 
 	useEffect(() => {
 		fetchPaginationLimit();
+		const page = +(localStorage.getItem('specializations_page') || 0);
+		setCurrentPageIndex(page);
 	}, []);
 
-	// fixme: code duplicate
 	const fetchPaginationLimit = () => {
 		axios.get(`${API_URL}/universities/limit`).then(
 			(response) => {
@@ -75,6 +80,7 @@ const Specializations = () => {
 	};
 	useEffect(() => {
 		search();
+		localStorage.setItem('specializations_page', currentPageIndex.toString());
 	}, [currentPageIndex]);
 
 	const search = () => {
@@ -83,7 +89,8 @@ const Specializations = () => {
 		const config = {
 			params: {
 				city: city,
-				tags: tags.join(',')
+				tags: tags.join(','),
+				name__icontains: name,
 			}
 		};
 
@@ -115,6 +122,8 @@ const Specializations = () => {
 				search_button_text={'Найти'}
 				onAddTag={onAddTag}
 				onDeleteTagByIndex={onDeleteTagByIndex}
+				name={name}
+				onNameChange={onNameChange}
 			/>
 			{
 				Math.ceil(totalCount / paginationLimit) > 1 && <Pagination limit={paginationLimit}

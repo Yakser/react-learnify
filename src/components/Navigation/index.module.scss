@@ -1,11 +1,11 @@
 @use "../../scss/utils/variables";
 
 .navigation {
-  max-width: 65rem;
-  width: 100%;
-
+  //max-width: 65rem;
+  //width: 100%;
+  width: max-content;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 
   line-height: 2.5rem;
   border-radius: variables.$infinite-border-radius;

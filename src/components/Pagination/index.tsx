@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from './index.module.scss';
+import {PAGINATION_PAGES_COUNT} from '../../utils/constants';
 
 interface PaginationProps {
 	limit: number,
@@ -18,7 +19,7 @@ const Pagination: React.FC<PaginationProps> = ({
 	const [indexesToShow, setIndexesToShow] = useState<number[]>([]);
 
 	useEffect(() => {
-		const pagesToShow = 7;
+		const pagesToShow = PAGINATION_PAGES_COUNT;
 
 		if (pagesCount <= pagesToShow) {
 			const tmp = Array(pagesCount).fill(null).map((_, i) => i);

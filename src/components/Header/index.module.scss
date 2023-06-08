@@ -17,6 +17,14 @@
     height: 100%;
     overflow: hidden;
   }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
   @media screen and (max-width: 1200px) {
     position: static;
     padding-top: 2rem;

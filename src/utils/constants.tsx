@@ -23,3 +23,6 @@ export const TRANSITION_STYLES = {
 		display: 'none'
 	},
 };
+
+
+export const PAGINATION_PAGES_COUNT = 7;
