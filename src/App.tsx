@@ -14,7 +14,7 @@ import Error from './pages/Error';
 import SpecializationDetail from './components/SpecializationDetail';
 import CalculatorPage from './pages/CalculatorPage';
 import DepartmentDetail from './components/DepartmentDetail';
-import Main from './pages/Main';
+import Main from './pages/Feed';
 
 const router = createBrowserRouter([
 	{
