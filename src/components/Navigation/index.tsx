@@ -7,14 +7,14 @@ const Navigation = () => {
 	return (
 		<nav className={styles.navigation}>
 			<Link to={'/'} className={styles.navigation__link}>
+				Главная
+			</Link>
+			<Link to={'/universities'} className={styles.navigation__link}>
 				Поиск вуза
 			</Link>
 			<Link to={'/specializations'} className={styles.navigation__link}>
 				Поиск специальности
 			</Link>
-			{/*<Link to={'/calculator'} className={styles.navigation__link}>*/}
-			{/*	Калькулятор*/}
-			{/*</Link>*/}
 		</nav>
 	);
 };

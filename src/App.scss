@@ -22,8 +22,6 @@
   }
 
 
-
-
   &__bg-container {
     display: flex;
     align-items: center;
@@ -54,21 +52,21 @@
 .form {
   max-width: 45rem;
   width: 100%;
-
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: variables.$white;
 
+  background: rgba(variables.$white, .9);
+  box-shadow: .8rem 4rem 4rem -.5rem rgba(214, 214, 214, 0.25);
+  backdrop-filter: blur(1.85rem);
   border-radius: 2rem;
-  border: .6rem solid variables.$white;
-
 
   &__label {
     display: block;
     border-radius: 10000px;
-
+    width: 100%;
     &:not(:last-child) {
       margin-bottom: 1rem;
     }
@@ -76,37 +74,35 @@
 
   &__input {
     width: calc(100% - .6rem);
-    border: 0;
 
-    border-bottom: .1rem solid variables.$gray;
+    border: .2rem solid lighten(variables.$purple, 20%);
 
-    padding: 2.4rem 3.7rem 1.2rem 1.2rem;
+    padding: 1.5rem 2rem;
     background-color: transparent;
+    border-radius: variables.$infinite-border-radius;
 
     font-weight: map-get($map: variables.$font-weights, $key: "medium");
     letter-spacing: .03rem;
     font-size: 1.8rem;
 
     &:focus,
-    &:focus-visible {
-      outline: .2rem solid variables.$blue;
-      border-bottom-color: transparent;
+     {
+      outline: none;
+    }
+
+    &:focus {
+      border: .2rem solid variables.$purple;
     }
 
     &::placeholder {
-      color: variables.$gray;
-    }
-
-    &:required {
-      border-color: variables.$blue;
-      border-width: .2rem;
+      color: rgba(variables.$black, .5);
     }
   }
 
   &__submit {
     width: 100%;
     margin-top: 2rem;
-    background-color: variables.$blue;
+    background-color: variables.$purple;
     border-radius: 10000px;
     padding: 1.8rem 3.3rem;
     cursor: pointer;
@@ -119,10 +115,9 @@
     color: variables.$white;
     font-weight: map-get($map: variables.$font-weights, $key: "medium");
 
-    &:focus,
-    &:focus-visible {
+    &:active {
       outline: none;
-      background-color: darken(variables.$blue, 10%);
+      background-color: darken(variables.$purple, 10%);
     }
   }
 
@@ -142,5 +137,24 @@
     font-size: 1.8rem;
     margin-bottom: 1rem;
   }
+  &__hint {
+    display: block;
+    font-size: 1.4rem;
+    padding-bottom: .3rem;
+  }
+  &__textarea {
+    border-radius: 2rem;
+  }
 }
 
+.main {
+  &__title {
+    text-align: center;
+    color: variables.$white;
+    margin-bottom: 2rem;
+  }
+
+  &__wrapper {
+    @include mixins.wrapper-desktop;
+  }
+}

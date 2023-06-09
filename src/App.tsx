@@ -14,6 +14,7 @@ import Error from './pages/Error';
 import SpecializationDetail from './components/SpecializationDetail';
 import CalculatorPage from './pages/CalculatorPage';
 import DepartmentDetail from './components/DepartmentDetail';
+import Main from './pages/Main';
 
 const router = createBrowserRouter([
 	{
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: '/',
+				element: <Main/>,
+			},
+			{
+				path: '/universities',
 				element: <Universities/>,
 			},
 			{
@@ -42,15 +47,11 @@ const router = createBrowserRouter([
 				element: <DepartmentDetail/>,
 			},
 			{
-				path: '/calculator',
-				element: <CalculatorPage/>,
-			},
-			{
-				path: 'login',
+				path: '/login',
 				element: <Login/>,
 			},
 			{
-				path: 'register',
+				path: '/register',
 				element: <Register/>,
 			},
 		],

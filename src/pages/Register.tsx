@@ -3,8 +3,9 @@ import RegisterForm from '../components/RegisterForm';
 
 const Register = () => {
 	return (
-		<main>
-			<h2 className={'title'}>Регистрация</h2>
+		<main className={'main'}>
+			<div className={'main__wrapper'}></div>
+			<h2 className={'title main__title'}>Регистрация</h2>
 			<RegisterForm/>
 		</main>
 	);
