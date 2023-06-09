@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm';
 
-const Login = () => {
+const LoginPage = () => {
 	return (
 		<main className={'main'}>
 			<div className={'main__wrapper'}></div>
@@ -11,4 +11,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default LoginPage;

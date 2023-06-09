@@ -1,9 +1,29 @@
-import React from 'react';
+import React, {FormEvent, useEffect, useState} from 'react';
 import styles from '../RegisterForm/index.module.scss';
+import {getToken} from '../../utils/helpers';
+import {useNavigate} from 'react-router-dom';
+import {login} from '../../utils/authThunk';
+import {useAppDispatch, useAppSelector} from '../../utils/hooks';
 
 const LoginForm = () => {
+	const [username, setUsername] = useState('');
+	const [password, setPassword] = useState('');
+	const dispatch = useAppDispatch();
+	const {token, loading} = useAppSelector((state) => state.auth);
+	const navigate = useNavigate();
+	useEffect(() => {
+		if (token || getToken()) {
+			navigate('/');
+		}
+	}, []);
+
+
+	const handleLogin = (event: FormEvent<SubmitEvent>) => {
+		event.preventDefault();
+		dispatch(login({username, password}));
+	};
 	return (
-		<form className={`form ${styles.signUpForm}`}>
+		<form onSubmit={handleLogin} className={`form ${styles.signUpForm}`}>
 			<label className={'form__label'}>
 				<span className={'form__hint'}>Псевдоним</span>
 				<input
@@ -11,7 +31,8 @@ const LoginForm = () => {
 					type="text"
 					name="username"
 					placeholder="learnify_enjoyer"
-					minLength={2}
+					value={username}
+					onChange={(e) => setUsername(e.target.value)}
 					required
 				/>
 			</label>
@@ -22,11 +43,15 @@ const LoginForm = () => {
 					type="password"
 					name="password"
 					placeholder="password"
-					minLength={8}
+					onChange={(e) => setPassword(e.target.value)}
+					value={password}
 					required
 				/>
 			</label>
-			<button className={'form__submit'} type="submit">Войти</button>
+			{loading ? <div className="loading"><span>Loading...</span></div> :
+				<button className={'form__submit'} type="submit">Войти</button>}
+
+
 		</form>
 	);
 };
