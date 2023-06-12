@@ -10,6 +10,7 @@ interface BackButtonProps {
 const BackButton: React.FC<BackButtonProps> = ({text}) => {
 	const navigate = useNavigate();
 
+
 	return (
 		<div className={styles.backButton}>
 			<Button className={styles.backButton__button} text={text} onClick={() => navigate(-1)}/>

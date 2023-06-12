@@ -2,7 +2,12 @@ import React from 'react';
 import styles from './index.module.scss';
 import {IUniversityList} from '../../utils/types';
 import {Transition} from 'react-transition-group';
-import {DEFAULT_TRANSITION_STYLES, LIST_CONTENT_LOADERS, TRANSITION_STYLES} from '../../utils/constants';
+import {
+	DEFAULT_TRANSITION_STYLES,
+	LIST_CONTENT_LOADERS,
+	PAGINATION_CONTENT_LOADER,
+	TRANSITION_STYLES
+} from '../../utils/constants';
 
 const UniversityCard = React.lazy(() => import('../UniversityCard'));
 

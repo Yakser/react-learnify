@@ -7,15 +7,18 @@ import {
 import Universities from './pages/Universities';
 import Specializations from './pages/Specializations';
 import Register from './pages/Register';
-import Login from './pages/Login';
+import Login from './pages/LoginPage';
 import Root from './pages/Root';
 import UniversityDetail from './components/UniversityDetail';
 import Error from './pages/Error';
 import SpecializationDetail from './components/SpecializationDetail';
-import CalculatorPage from './pages/CalculatorPage';
 import DepartmentDetail from './components/DepartmentDetail';
+import Main from './pages/Feed';
+import PrivateRoute from './components/PrivateRoute';
+import Profile from './pages/Profile';
 
-const router = createBrowserRouter([
+
+export const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <Root/>,
@@ -24,6 +27,10 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Universities/>,
+			},
+			{
+				path: '/feed',
+				element: <Main/>,
 			},
 			{
 				path: '/universities/:universityId',
@@ -42,16 +49,17 @@ const router = createBrowserRouter([
 				element: <DepartmentDetail/>,
 			},
 			{
-				path: '/calculator',
-				element: <CalculatorPage/>,
-			},
-			{
-				path: 'login',
+				path: '/login',
 				element: <Login/>,
+			}, {
+				path: '/register',
+				element: <Register/>,
 			},
 			{
-				path: 'register',
-				element: <Register/>,
+				path: '/profile',
+				element: <PrivateRoute>
+					<Profile/>
+				</PrivateRoute>,
 			},
 		],
 	},
@@ -59,6 +67,7 @@ const router = createBrowserRouter([
 
 const App = () => {
 	return (
+
 		<RouterProvider router={router}/>
 	);
 };

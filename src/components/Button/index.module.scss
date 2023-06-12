@@ -12,5 +12,12 @@
 
   background-color: variables.$light-purple;
   transition: variables.$transition;
+  transition-property: background-color;
   cursor: pointer;
+
+
+  &:hover {
+    background-color: variables.$dark-purple;
+  }
+
 }

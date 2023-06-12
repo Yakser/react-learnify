@@ -1,5 +1,9 @@
 import React, {ReactElement} from 'react';
 import ContentLoader from 'react-content-loader';
+import {createAsyncThunk} from '@reduxjs/toolkit';
+import api from './api';
+import {router} from '../App';
+import {LoginData} from './types';
 
 export const capitalize = (string: string): string => {
 	return string.charAt(0).toUpperCase() + string.slice(1);
@@ -31,3 +35,24 @@ export const addEllipsis = (string: string, length: number) => {
 	}
 	return string;
 };
+
+export const camelToUnderscore = (key: string): string => {
+	return key.replace(/([A-Z])/g, '_$1').toLowerCase();
+};
+
+
+export const getToken = () => {
+	return localStorage.getItem('token');
+};
+
+export const setToken = (token: string) => {
+	localStorage.setItem('token', token);
+};
+
+export const removeToken = () => {
+	localStorage.removeItem('token');
+};
+
+
+
+

@@ -4,11 +4,11 @@ import styles from './index.module.scss';
 
 const LoginButton = () => {
 	const onClick = () => {
-		console.warn('Login button clicked');
+		return;
 	};
 
 	return (
-		<Button className={styles['login-button']} onClick={onClick} text={'Войти'} link={'/login'} />
+		<Button className={styles['login-button']} onClick={onClick} text={'Войти'} link={'/login'}/>
 	);
 };
 

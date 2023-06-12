@@ -4,13 +4,14 @@ import {Link} from 'react-router-dom';
 
 interface ButtonProps {
 	text: string;
-	onClick: () => void;
+	onClick?: () => void;
 	className?: string;
 	link?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({text, onClick, className, link}) => {
 	return (
+		// fixme
 		<Link to={link || '/'}>
 			<button className={`${styles.button} ${className}`} type={'button'} onClick={onClick}>
 				{text}

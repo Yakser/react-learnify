@@ -5,6 +5,17 @@ export interface IDepartmentList {
 	'tags': string[];
 }
 
+export interface IUser {
+	id: number | undefined;
+	username: string;
+	email: string;
+	first_name: string;
+	last_name: string;
+	about: string;
+	favorite_subjects: string;
+	achievements: string;
+}
+
 export interface IDepartmentDetail {
 	'id': number;
 	'name': string;
@@ -54,4 +65,9 @@ export interface ISpecializationDetail {
 	logo_url: string;
 	tags: string[];
 	university_name: string;
+}
+
+export interface LoginData {
+	username: string;
+	password: string;
 }

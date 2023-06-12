@@ -1,0 +1,48 @@
+@use "../../scss/utils/variables";
+@use "../../scss/utils/mixins";
+
+.profileCard {
+  max-width: 114rem;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  grid-template-columns: 1fr 1fr 1fr;
+
+  padding: 5rem 5rem;
+  margin: 2rem auto 5rem;
+
+  background: rgba(variables.$gray, .5);
+  box-shadow: .4rem 2rem 3rem -.25rem rgba(214, 214, 214, 0.25);
+  backdrop-filter: blur(1.85rem);
+  border-radius: 5rem;
+  border: .2rem solid rgba(209, 213, 219, 0.3);
+
+  transition: variables.$transition;
+  transition-property: transform;
+  transition-duration: .3s;
+
+  &__img {
+    svg {
+      stroke: variables.$purple;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  &__text {
+    font-size: 2rem;
+    font-weight: map-get(variables.$font-weights, "medium");
+  }
+
+}
