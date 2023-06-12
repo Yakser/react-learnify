@@ -5,14 +5,6 @@ import {IUser, LoginData} from './types';
 import {AxiosError} from 'axios';
 
 
-interface RegisterResponseError {
-	data?: object;
-}
-
-interface RegisterResponse {
-	data?: IUser;
-	response?: RegisterResponseError;
-}
 
 export const fetchUserData = createAsyncThunk(
 	'auth/fetchUserData',
@@ -38,11 +30,11 @@ export const logout = createAsyncThunk(
 	}
 );
 
-export const register = createAsyncThunk<RegisterResponse, IUser>(
+export const register = createAsyncThunk<IUser | object, IUser>(
 	'auth/register',
 	async (payload, {rejectWithValue}) => {
 		try {
-			const response = await registerApi.post<RegisterResponse>('/auth/users/', payload);
+			const response = await registerApi.post<IUser>('/auth/users/', payload);
 			return response.data;
 		} catch (e: unknown) {
 			if (e instanceof AxiosError) {

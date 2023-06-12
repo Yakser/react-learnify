@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {IUniversityList} from '../utils/types';
-import axios from 'axios';
 import UniversityList from '../components/UniversityList';
 import Hero from '../components/Hero';
 import {capitalize} from '../utils/helpers';

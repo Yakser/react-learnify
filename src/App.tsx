@@ -4,18 +4,19 @@ import {
 	createBrowserRouter,
 	RouterProvider
 } from 'react-router-dom';
-import Universities from './pages/Universities';
-import Specializations from './pages/Specializations';
 import Register from './pages/Register';
-import Login from './pages/LoginPage';
 import Root from './pages/Root';
 import UniversityDetail from './components/UniversityDetail';
 import Error from './pages/Error';
+import Profile from './pages/Profile';
+import Universities from './pages/Universities';
+import Feed from './pages/Feed';
+import Specializations from './pages/Specializations';
 import SpecializationDetail from './components/SpecializationDetail';
 import DepartmentDetail from './components/DepartmentDetail';
-import Main from './pages/Feed';
+import LoginPage from './pages/LoginPage';
 import PrivateRoute from './components/PrivateRoute';
-import Profile from './pages/Profile';
+
 
 
 export const router = createBrowserRouter([
@@ -30,7 +31,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: '/feed',
-				element: <Main/>,
+				element: <Feed/>,
 			},
 			{
 				path: '/universities/:universityId',
@@ -50,7 +51,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: '/login',
-				element: <Login/>,
+				element: <LoginPage/>,
 			}, {
 				path: '/register',
 				element: <Register/>,
