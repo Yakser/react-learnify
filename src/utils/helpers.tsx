@@ -1,5 +1,9 @@
 import React, {ReactElement} from 'react';
 import ContentLoader from 'react-content-loader';
+import {createAsyncThunk} from '@reduxjs/toolkit';
+import api from './api';
+import {router} from '../App';
+import {LoginData} from './types';
 
 export const capitalize = (string: string): string => {
 	return string.charAt(0).toUpperCase() + string.slice(1);
@@ -43,3 +47,11 @@ export const setToken = (token: string) => {
 export const removeToken = () => {
 	localStorage.removeItem('token');
 };
+
+
+export const login = async (loginData: LoginData) => {
+	const response = await api.post('/token/', loginData);
+	setToken(response.data.access);
+};
+
+

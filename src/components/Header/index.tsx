@@ -5,19 +5,19 @@ import LoginButton from '../LoginButton';
 import RegisterButton from '../RegisterButton';
 import Navigation from '../Navigation';
 import Button from '../Button';
-import {useAppDispatch, useAppSelector} from '../../utils/hooks';
+import {useAppSelector} from '../../utils/hooks';
 
 
 const Header = () => {
-	const {token, loading} = useAppSelector((state) => state.auth);
-	const dispatch = useAppDispatch();
+	const {user} = useAppSelector((state) => state.auth);
+
 	return (
 		<header className={styles.header}>
 			<div className={styles.header__wrapper}>
 				<Logo/>
 				<Navigation/>
 
-				{token ? <div className={styles.header__buttons}>
+				{user.id ? <div className={styles.header__buttons}>
 						<Button text="Профиль" link={'/profile'}/>
 					</div> :
 					<div className={styles.header__buttons}>

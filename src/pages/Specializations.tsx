@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {API_URL} from '../utils/constants';
 import {ISpecializationList} from '../utils/types';
 import axios from 'axios';
 import Hero from '../components/Hero';
 import SpecializationList from '../components/SpecializationList';
 import {capitalize} from '../utils/helpers';
 import Pagination from '../components/Pagination';
+import api from '../utils/api';
 
 const Specializations = () => {
 	const [specializations, setSpecializations] = useState<ISpecializationList[]>([]);
@@ -66,7 +66,7 @@ const Specializations = () => {
 	}, []);
 
 	const fetchPaginationLimit = () => {
-		axios.get(`${API_URL}/universities/limit`).then(
+		api.get('/universities/limit').then(
 			(response) => {
 				setPaginationLimit(response.data['limit']);
 			}
@@ -90,7 +90,7 @@ const Specializations = () => {
 			}
 		};
 
-		axios.get(`${API_URL}/universities/specializations`, config).then((response) => {
+		api.get('/universities/specializations', config).then((response) => {
 			const {status, data} = response;
 			if (status === 200) {
 				setSpecializations(data['results']);

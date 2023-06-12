@@ -1,26 +1,28 @@
 import React, {FormEvent, useEffect, useState} from 'react';
 import styles from '../RegisterForm/index.module.scss';
-import {getToken} from '../../utils/helpers';
+import {getToken, login} from '../../utils/helpers';
 import {useNavigate} from 'react-router-dom';
-import {login} from '../../utils/authThunk';
-import {useAppDispatch, useAppSelector} from '../../utils/hooks';
 
 const LoginForm = () => {
-	const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
-	const dispatch = useAppDispatch();
-	const {token, loading} = useAppSelector((state) => state.auth);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [username, setUsername] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
+	const token = getToken();
+
 	const navigate = useNavigate();
 	useEffect(() => {
-		if (token || getToken()) {
+		if (token) {
 			navigate('/');
 		}
 	}, []);
 
 
-	const handleLogin = (event: FormEvent<SubmitEvent>) => {
+	const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		dispatch(login({username, password}));
+		setIsLoading(true);
+		await login({username, password});
+		navigate('/');
+		setIsLoading(false);
 	};
 	return (
 		<form onSubmit={handleLogin} className={`form ${styles.signUpForm}`}>
@@ -48,7 +50,7 @@ const LoginForm = () => {
 					required
 				/>
 			</label>
-			{loading ? <div className="loading"><span>Loading...</span></div> :
+			{isLoading ? <div className="loading"><span>Loading...</span></div> :
 				<button className={'form__submit'} type="submit">Войти</button>}
 
 

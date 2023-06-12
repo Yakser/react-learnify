@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {API_URL} from '../utils/constants';
 import {IUniversityList} from '../utils/types';
 import axios from 'axios';
 import UniversityList from '../components/UniversityList';
 import Hero from '../components/Hero';
 import {capitalize} from '../utils/helpers';
 import Pagination from '../components/Pagination';
+import api from '../utils/api';
 
 const Universities = () => {
 	const [universities, setUniversities] = useState<IUniversityList[]>([]);
@@ -67,7 +67,7 @@ const Universities = () => {
 	}, []);
 
 	const fetchPaginationLimit = () => {
-		axios.get(`${API_URL}/universities/limit`).then(
+		api.get('/universities/limit').then(
 			(response) => {
 				setPaginationLimit(response.data['limit']);
 			}
@@ -91,7 +91,7 @@ const Universities = () => {
 				name__icontains: name,
 			}
 		};
-		axios.get(`${API_URL}/universities/?limit=${paginationLimit}&offset=${currentPageIndex * paginationLimit}`, config).then((response) => {
+		api.get(`/universities/?limit=${paginationLimit}&offset=${currentPageIndex * paginationLimit}`, config).then((response) => {
 			const {status, data} = response;
 			if (status === 200) {
 				setUniversities(data['results']);
