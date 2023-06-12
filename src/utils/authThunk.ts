@@ -30,7 +30,7 @@ export const logout = createAsyncThunk(
 	}
 );
 
-export const register = createAsyncThunk<IUser | object, IUser>(
+export const register = createAsyncThunk<IUser, IUser>(
 	'auth/register',
 	async (payload, {rejectWithValue}) => {
 		try {

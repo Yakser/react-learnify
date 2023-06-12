@@ -26,6 +26,7 @@ export const authSlice = createSlice({
 					state.user = {
 						id: undefined,
 						username: '',
+						password: '',
 						email: '',
 						first_name: '',
 						last_name: '',
@@ -51,6 +52,6 @@ export const authSlice = createSlice({
 ;
 
 
-export const {} = authSlice.actions;
+// export const {} = authSlice.actions;
 
 export default authSlice.reducer;
