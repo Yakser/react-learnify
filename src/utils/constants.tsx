@@ -1,10 +1,22 @@
 import {get_list_of_content_loaders} from './helpers';
+import ContentLoader from 'react-content-loader';
+import React from 'react';
 
-export const API_URL: string = import.meta.env.VITE_API_URL;
 
 
 export const LIST_CONTENT_LOADERS = get_list_of_content_loaders();
-
+export const PAGINATION_CONTENT_LOADER = (
+	<ContentLoader
+		width={400}
+		height={600}
+		speed={2}
+		viewBox="0 0 300 73"
+		backgroundColor="#f3f3f3"
+		foregroundColor="#ecebeb"
+	>
+		<rect x="0" y="0" rx="25" ry="25" width="300" height="73"/>
+	</ContentLoader>
+);
 export const DEFAULT_TRANSITION_STYLES = {
 	opacity: 0,
 	transition: 'opacity 200ms ease-in-out',

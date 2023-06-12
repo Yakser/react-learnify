@@ -2,11 +2,10 @@ import React, {useEffect, useState} from 'react';
 
 import {useParams} from 'react-router-dom';
 import {ISpecializationDetail} from '../../utils/types';
-import axios from 'axios';
-import {API_URL} from '../../utils/constants';
 import styles from './index.module.scss';
 import EmptyImage from '../EmptyImage';
 import BackButton from '../BackButton';
+import api from '../../utils/api';
 
 const SpecializationDetail = () => {
 	const {specializationId} = useParams();
@@ -15,7 +14,7 @@ const SpecializationDetail = () => {
 	});
 
 	useEffect(() => {
-		axios.get(`${API_URL}/universities/specializations/${specializationId}/`)
+		api.get(`/universities/specializations/${specializationId}/`)
 			.then((response) => {
 				const {status, data} = response;
 				if (status === 200) {

@@ -2,12 +2,11 @@ import React, {useEffect, useState} from 'react';
 
 import {useParams} from 'react-router-dom';
 import {IUniversityDetail} from '../../utils/types';
-import axios from 'axios';
-import {API_URL} from '../../utils/constants';
 import styles from './index.module.scss';
 import EmptyImage from '../EmptyImage';
 import BackButton from '../BackButton';
 import DepartmentCard from '../DepartmentCard';
+import api from '../../utils/api';
 
 const UniversityDetail = () => {
 	const {universityId} = useParams();
@@ -16,7 +15,7 @@ const UniversityDetail = () => {
 	});
 
 	useEffect(() => {
-		axios.get(`${API_URL}/universities/${universityId}/`).then((response) => {
+		api.get(`/universities/${universityId}/`).then((response) => {
 			const {status, data} = response;
 			if (status === 200) {
 				setUniversity(data);
