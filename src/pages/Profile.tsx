@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import {useAppDispatch, useAppSelector} from '../utils/hooks';
 import {useNavigate} from 'react-router-dom';
 import {fetchUserData, logout} from '../utils/authThunk';
+import ProfileCard from '../components/ProfileCard';
 
 const Profile = () => {
 	const dispatch = useAppDispatch();
@@ -26,11 +27,8 @@ const Profile = () => {
 			<div className={'main__wrapper'}>
 
 				<h2 className={'main__title'}>Профиль</h2>
-				<p>Имя: {user.first_name}</p>
-				<p>Фамилия: {user.last_name}</p>
-				<p>Почта: {user.email}</p>
+				<ProfileCard user={user} onLogout={onLogout}/>
 
-				<Button onClick={onLogout} text="Выйти"/>
 			</div>
 		</main>
 	);

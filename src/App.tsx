@@ -26,11 +26,11 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <Main/>,
+				element: <Universities/>,
 			},
 			{
-				path: '/universities',
-				element: <Universities/>,
+				path: '/feed',
+				element: <Main/>,
 			},
 			{
 				path: '/universities/:universityId',
