@@ -1,8 +1,18 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {getToken, removeToken, setToken} from './helpers';
 import api, {registerApi} from './api';
-import {LoginData} from './types';
+import {IUser, LoginData} from './types';
+import {AxiosError} from 'axios';
 
+
+interface RegisterResponseError {
+	data?: object;
+}
+
+interface RegisterResponse {
+	data?: IUser;
+	response?: RegisterResponseError;
+}
 
 export const fetchUserData = createAsyncThunk(
 	'auth/fetchUserData',
@@ -28,18 +38,22 @@ export const logout = createAsyncThunk(
 	}
 );
 
-export const register = createAsyncThunk(
+export const register = createAsyncThunk<RegisterResponse, IUser>(
 	'auth/register',
 	async (payload, {rejectWithValue}) => {
 		try {
-			const response = await registerApi.post('/auth/users/', payload);
+			const response = await registerApi.post<RegisterResponse>('/auth/users/', payload);
 			return response.data;
-		} catch (e) {
-			return rejectWithValue(e?.response?.data);
+		} catch (e: unknown) {
+			if (e instanceof AxiosError) {
+				const axiosError = e as AxiosError;
+				return rejectWithValue(axiosError.response?.data);
+			}
+			return rejectWithValue({});
 		}
 	}
 );
-export const login = createAsyncThunk(
+export const login = createAsyncThunk<IUser, LoginData>(
 	'auth/login',
 	async (payload, {dispatch}) => {
 		const response = await api.post('/token/', payload);

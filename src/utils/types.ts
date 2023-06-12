@@ -8,6 +8,7 @@ export interface IDepartmentList {
 export interface IUser {
 	id: number | undefined;
 	username: string;
+	password: string;
 	email: string;
 	first_name: string;
 	last_name: string;

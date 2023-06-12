@@ -27,7 +27,16 @@ const RegisterForm = () => {
 		}
 		setIsLoading(true);
 
-		dispatch(register({username, password, email, first_name: firstName, last_name: lastName, subjects, achievements, about}))
+		dispatch(register({
+			username,
+			password,
+			email,
+			first_name: firstName,
+			last_name: lastName,
+			subjects,
+			achievements,
+			about
+		}))
 			.then((response) => {
 
 				const {payload} = response;
@@ -37,7 +46,7 @@ const RegisterForm = () => {
 					setErrorText('');
 				} else {
 					const text: Array<string> = [];
-					for(const key in payload) {
+					for (const key in payload) {
 						text.push(...payload[key]);
 					}
 					setErrorText(text.join('\n'));
