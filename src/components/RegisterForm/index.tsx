@@ -1,18 +1,18 @@
-import React, {FormEvent, useEffect, useState} from 'react';
+import React, {FormEvent, useState} from 'react';
 import styles from './index.module.scss';
 import {useNavigate} from 'react-router-dom';
 import {register} from '../../utils/authThunk';
-import {useAppDispatch, useAppSelector} from '../../utils/hooks';
+import {useAppDispatch} from '../../utils/hooks';
 
 
 const RegisterForm = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [username, setUsername] = useState<string>('test');
-	const [password, setPassword] = useState<string>('12345678');
-	const [password2, setPassword2] = useState<string>('12345678');
-	const [email, setEmail] = useState<string>('test@email.com');
-	const [firstName, setFirstName] = useState<string>('firstname');
-	const [lastName, setLastName] = useState<string>('lastname');
+	const [username, setUsername] = useState<string>('');
+	const [password, setPassword] = useState<string>('');
+	const [password2, setPassword2] = useState<string>('');
+	const [email, setEmail] = useState<string>('');
+	const [firstName, setFirstName] = useState<string>('');
+	const [lastName, setLastName] = useState<string>('');
 	const [errorText, setErrorText] = useState<string>('');
 	const [subjects, setSubjects] = useState<string>('');
 	const [achievements, setAchievements] = useState<string>('');
@@ -183,7 +183,9 @@ const RegisterForm = () => {
 			<div className={'form__error'}>
 				{errorText}
 			</div>
-			<button className={'form__submit'} type="submit">Зарегистрироваться</button>
+			<button className={'form__submit'} type="submit" disabled={isLoading}>
+				{isLoading ? 'Загрузка...' : 'Зарегистрироваться'}
+			</button>
 		</form>
 	);
 };
