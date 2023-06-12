@@ -54,9 +54,5 @@ export const removeToken = () => {
 };
 
 
-export const login = async (loginData: LoginData) => {
-	const response = await api.post('/token/', loginData);
-	setToken(response.data.access);
-};
 
 

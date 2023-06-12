@@ -1,7 +1,9 @@
 import React, {FormEvent, useEffect, useState} from 'react';
 import styles from '../RegisterForm/index.module.scss';
-import {getToken, login} from '../../utils/helpers';
+import {getToken} from '../../utils/helpers';
 import {useNavigate} from 'react-router-dom';
+import {useAppDispatch} from '../../utils/hooks';
+import {login} from '../../utils/authThunk';
 
 const LoginForm = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -9,7 +11,7 @@ const LoginForm = () => {
 	const [password, setPassword] = useState<string>('');
 	const [error, setError] = useState<string>('');
 	const token = getToken();
-
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	useEffect(() => {
 		if (token) {
@@ -21,7 +23,7 @@ const LoginForm = () => {
 	const onLogin = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setIsLoading(true);
-		login({username, password}).then(() => {
+		dispatch(login({username, password})).then(() => {
 			navigate('/');
 			setError('');
 			setIsLoading(false);

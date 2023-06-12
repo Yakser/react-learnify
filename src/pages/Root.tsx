@@ -8,7 +8,10 @@ import api from '../utils/api';
 
 const Root = () => {
 	useEffect(() => {
-		api.defaults.headers.common['Authorization'] = `Bearer ${getToken()}`;
+		const token = getToken();
+		if (token) {
+			api.defaults.headers.common['Authorization'] = `Bearer ${getToken()}`;
+		}
 	}, []);
 
 	return (

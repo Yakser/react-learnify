@@ -6,7 +6,7 @@ export interface IDepartmentList {
 }
 
 export interface IUser {
-	id: number | null;
+	id: number | undefined;
 	username: string;
 	email: string;
 	first_name: string;
