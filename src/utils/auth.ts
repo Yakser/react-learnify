@@ -33,6 +33,7 @@ export const authSlice = createSlice({
 						about: '',
 						favorite_subjects: '',
 						achievements: '',
+						subjects: '',
 					};
 				}
 			);

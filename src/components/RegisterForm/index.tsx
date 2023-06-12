@@ -33,12 +33,11 @@ const RegisterForm = () => {
 			email,
 			first_name: firstName,
 			last_name: lastName,
-			subjects,
+			favorite_subjects: subjects,
 			achievements,
-			about
+			about,
 		}))
-			.then((response) => {
-
+			.then((response: any) => {
 				const {payload} = response;
 
 				if (payload.id) {
