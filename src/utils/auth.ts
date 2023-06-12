@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {fetchUserData, logout} from './authThunk';
+import {fetchUserData, logout, register} from './authThunk';
 import {IUser} from './types';
 
 export interface AuthState {
@@ -36,11 +36,17 @@ export const authSlice = createSlice({
 				}
 			);
 
+			builder.addCase(
+				register.fulfilled, (state, action) => {
+					// state.user = action.payload;
+				}
+			);
+
 		},
 	})
 ;
 
 
-// export const {} =  authSlice.actions;
+export const {} =  authSlice.actions;
 
 export default authSlice.reducer;

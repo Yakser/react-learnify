@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import Button from '../components/Button';
 import {useAppDispatch, useAppSelector} from '../utils/hooks';
-import {removeToken} from '../utils/helpers';
 import {useNavigate} from 'react-router-dom';
-import {logout} from '../utils/authThunk';
+import {fetchUserData, logout} from '../utils/authThunk';
 
 const Profile = () => {
 	const dispatch = useAppDispatch();
@@ -15,16 +14,25 @@ const Profile = () => {
 			navigate('/');
 		});
 	};
-	return (
-		<div>
-			<h2>Профиль</h2>
-			<p>ID: {user.id}</p>
-			<p>Имя: {user.first_name}</p>
-			<p>Фамилия: {user.last_name}</p>
-			<p>Почта: {user.email}</p>
 
-			<Button onClick={onLogout} text="Выйти"/>
-		</div>
+	useEffect(() => {
+		if (!user.id) {
+			dispatch(fetchUserData());
+		}
+	}, []);
+
+	return (
+		<main className={'main'}>
+			<div className={'main__wrapper'}>
+
+				<h2 className={'main__title'}>Профиль</h2>
+				<p>Имя: {user.first_name}</p>
+				<p>Фамилия: {user.last_name}</p>
+				<p>Почта: {user.email}</p>
+
+				<Button onClick={onLogout} text="Выйти"/>
+			</div>
+		</main>
 	);
 };
 

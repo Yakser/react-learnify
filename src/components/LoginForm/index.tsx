@@ -7,6 +7,7 @@ const LoginForm = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [username, setUsername] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
+	const [error, setError] = useState<string>('');
 	const token = getToken();
 
 	const navigate = useNavigate();
@@ -17,15 +18,20 @@ const LoginForm = () => {
 	}, []);
 
 
-	const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
+	const onLogin = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setIsLoading(true);
-		await login({username, password});
-		navigate('/');
-		setIsLoading(false);
+		login({username, password}).then(() => {
+			navigate('/');
+			setError('');
+			setIsLoading(false);
+		}).catch((error) => {
+			setError(error.response.data.detail);
+			setIsLoading(false);
+		});
 	};
 	return (
-		<form onSubmit={handleLogin} className={`form ${styles.signUpForm}`}>
+		<form onSubmit={onLogin} className={`form ${styles.signUpForm}`}>
 			<label className={'form__label'}>
 				<span className={'form__hint'}>Псевдоним</span>
 				<input
@@ -50,8 +56,14 @@ const LoginForm = () => {
 					required
 				/>
 			</label>
-			{isLoading ? <div className="loading"><span>Loading...</span></div> :
-				<button className={'form__submit'} type="submit">Войти</button>}
+			<div className="form__error">
+				{error}
+			</div>
+			<button className={'form__submit'} type="submit">
+				{
+					isLoading ? 'Загрузка...' : 'Войти'
+				}
+			</button>
 
 
 		</form>

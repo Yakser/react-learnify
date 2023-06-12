@@ -67,6 +67,7 @@
     display: block;
     border-radius: 10000px;
     width: 100%;
+
     &:not(:last-child) {
       margin-bottom: 1rem;
     }
@@ -86,7 +87,7 @@
     font-size: 1.8rem;
 
     &:focus,
-     {
+    {
       outline: none;
     }
 
@@ -137,13 +138,21 @@
     font-size: 1.8rem;
     margin-bottom: 1rem;
   }
+
   &__hint {
     display: block;
     font-size: 1.4rem;
     padding-bottom: .3rem;
   }
+
   &__textarea {
     border-radius: 2rem;
+  }
+
+  &__error {
+    min-height: 4rem;
+    color: variables.$red;
+    font-size: 1.6rem;
   }
 }
 
@@ -151,10 +160,20 @@
   &__title {
     text-align: center;
     color: variables.$white;
-    margin-bottom: 2rem;
+    font-size: 3rem;
+    max-width: 50rem;
+    margin: 0 auto 2rem;
   }
 
   &__wrapper {
     @include mixins.wrapper-desktop;
+  }
+
+  & &__link {
+    text-decoration: underline;
+
+    &:hover {
+      opacity: .7;
+    }
   }
 }

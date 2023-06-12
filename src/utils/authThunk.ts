@@ -1,6 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {getToken, removeToken} from './helpers';
-import api from './api';
+import api, {registerApi} from './api';
 
 
 export const fetchUserData = createAsyncThunk(
@@ -22,3 +22,18 @@ export const logout = createAsyncThunk(
 		removeToken();
 	}
 );
+
+export const register = createAsyncThunk(
+	'auth/register',
+	async (payload, {rejectWithValue}) => {
+		try {
+			// api.defaults.headers.common['Authorization'] = `Bearer ${getToken()}`;
+			// remove token from headers
+			const response = await registerApi.post('/auth/users/', payload);
+			return response.data;
+		} catch (e) {
+			return rejectWithValue(e?.response?.data);
+		}
+	}
+);
+
