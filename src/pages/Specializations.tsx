@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {ISpecializationList} from '../utils/types';
-import axios from 'axios';
 import Hero from '../components/Hero';
 import SpecializationList from '../components/SpecializationList';
 import {capitalize} from '../utils/helpers';
@@ -87,6 +86,8 @@ const Specializations = () => {
 				city: city,
 				tags: tags.join(','),
 				name__icontains: name,
+				limit: paginationLimit,
+				offset: currentPageIndex * paginationLimit,
 			}
 		};
 

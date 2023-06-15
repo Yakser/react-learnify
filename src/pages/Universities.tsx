@@ -86,11 +86,13 @@ const Universities = () => {
 		const config = {
 			params: {
 				city: city,
+				limit: paginationLimit,
 				tags: tags.join(','),
 				name__icontains: name,
+				offset: currentPageIndex * paginationLimit,
 			}
 		};
-		api.get(`/universities/?limit=${paginationLimit}&offset=${currentPageIndex * paginationLimit}`, config).then((response) => {
+		api.get('/universities/', config).then((response) => {
 			const {status, data} = response;
 			if (status === 200) {
 				setUniversities(data['results']);

@@ -36,9 +36,9 @@ export const register = createAsyncThunk<IUser, IUser>(
 		try {
 			const response = await registerApi.post<IUser>('/auth/users/', payload);
 			return response.data;
-		} catch (e: unknown) {
-			if (e instanceof AxiosError) {
-				const axiosError = e as AxiosError;
+		} catch (error: unknown) {
+			if (error instanceof AxiosError) {
+				const axiosError = error as AxiosError;
 				return rejectWithValue(axiosError.response?.data);
 			}
 			return rejectWithValue({});
