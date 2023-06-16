@@ -1,6 +1,6 @@
 import React, {FormEvent, useEffect, useState} from 'react';
 import styles from '../RegisterForm/index.module.scss';
-import {getToken} from '../../utils/helpers';
+import {getAccessToken} from '../../utils/helpers';
 import {useNavigate} from 'react-router-dom';
 import {useAppDispatch} from '../../utils/hooks';
 import {login} from '../../utils/authThunk';
@@ -10,7 +10,7 @@ const LoginForm = () => {
 	const [username, setUsername] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [error, setError] = useState<string>('');
-	const token = getToken();
+	const token = getAccessToken();
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	useEffect(() => {
@@ -23,12 +23,16 @@ const LoginForm = () => {
 	const onLogin = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setIsLoading(true);
-		dispatch(login({username, password})).then(() => {
-			navigate('/');
-			setError('');
-			setIsLoading(false);
-		}).catch((error) => {
-			setError(error.response.data.detail);
+		setError('');
+		dispatch(login({username, password})).then((response) => {
+			if (response.meta.requestStatus === 'fulfilled') {
+				navigate('/');
+			} else {
+				setError('Неверный псевдоним или пароль!'); // or server error xD fixme
+			}
+		}).catch(() => {
+			setError('Произошла неизвестная ошибка!');
+		}).finally(() => {
 			setIsLoading(false);
 		});
 	};

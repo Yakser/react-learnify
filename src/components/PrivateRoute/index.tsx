@@ -1,6 +1,5 @@
 import {Navigate} from 'react-router-dom';
 import React from 'react';
-import {getToken} from '../../utils/helpers';
 import {useAppSelector} from '../../utils/hooks';
 
 interface PrivateRouteProps {

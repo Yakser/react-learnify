@@ -1,5 +1,5 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {getToken, removeToken, setToken} from './helpers';
+import {getAccessToken, removeAccessToken, removeRefreshToken, setAccessToken, setRefreshToken} from './helpers';
 import api, {registerApi} from './api';
 import {IUser, LoginData} from './types';
 import {AxiosError} from 'axios';
@@ -10,9 +10,9 @@ export const fetchUserData = createAsyncThunk(
 	'auth/fetchUserData',
 	async (_, {rejectWithValue}) => {
 		try {
-			const token = getToken();
+			const token = getAccessToken();
 			if (token) {
-				api.defaults.headers.common['Authorization'] = `Bearer ${getToken()}`;
+				api.defaults.headers.common['Authorization'] = `Bearer ${getAccessToken()}`;
 			}
 			const {data} = await api.get('/auth/users/current');
 			return data;
@@ -26,7 +26,8 @@ export const logout = createAsyncThunk(
 	'auth/logout',
 	async () => {
 		delete api.defaults.headers.common['Authorization'];
-		removeToken();
+		removeAccessToken();
+		removeRefreshToken();
 	}
 );
 
@@ -49,7 +50,8 @@ export const login = createAsyncThunk<IUser, LoginData>(
 	'auth/login',
 	async (payload, {dispatch}) => {
 		const response = await api.post('/token/', payload);
-		setToken(response.data.access);
+		setAccessToken(response.data.access);
+		setRefreshToken(response.data.refresh);
 		api.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
 		return (await dispatch(fetchUserData())).payload;
 	}

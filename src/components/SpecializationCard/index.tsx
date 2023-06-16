@@ -21,7 +21,6 @@ const SpecializationCard: React.FC<SpecializationCardProps> = ({specialization})
 						(
 							<EmptyImage/>
 						)
-
 				}
 			</Link>
 			<p className={styles.specializationCard__name}>
