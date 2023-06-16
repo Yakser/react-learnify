@@ -12,7 +12,7 @@ const SpecializationCard: React.FC<SpecializationCardProps> = ({specialization})
 	const LINK_TO_DETAILED = `/specializations/${specialization.id}/`;
 	return (
 		<div className={styles.specializationCard}>
-			<Link to={LINK_TO_DETAILED}>
+			<Link to={LINK_TO_DETAILED} title={specialization.name}>
 				{
 					specialization.logo_url ? (
 						<img src={specialization.logo_url}

@@ -13,7 +13,7 @@ const UniversityCard: React.FC<UniversityCardProps> = ({university}) => {
 	const LINK_TO_DETAILED = `/universities/${university.id}/`;
 	return (
 		<div className={styles['university-card']}>
-			<Link to={LINK_TO_DETAILED}>
+			<Link to={LINK_TO_DETAILED} title={university.name}>
 				{
 					university.logo_url ? (
 						<img src={university.logo_url}
