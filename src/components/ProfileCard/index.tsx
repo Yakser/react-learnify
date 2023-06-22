@@ -70,12 +70,29 @@ const ProfileCard: React.FC = () => {
 						strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
 				</svg>
 			</div>
-			<p>{user.username}</p>
-			<p>{user.email}</p>
 			<form onSubmit={onSubmit} className={`form ${styles.profileCard__form}`}>
 				<fieldset className={'form__fieldset'}>
 					<legend className={'form__legend'}>Основная информация</legend>
-
+					<label className={'form__label'}>
+						<span className={'form__hint'}>Никнейм</span>
+						<input
+							className={'form__input'}
+							type="text"
+							name="username"
+							value={user.username}
+							disabled
+						/>
+					</label>
+					<label className={'form__label'}>
+						<span className={'form__hint'}>Почта</span>
+						<input
+							className={'form__input'}
+							type="email"
+							name="email"
+							value={user.email}
+							disabled
+						/>
+					</label>
 					<label className={'form__label'}>
 						<span className={'form__hint'}>Имя</span>
 						<input
