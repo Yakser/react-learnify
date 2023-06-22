@@ -1,9 +1,9 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {getAccessToken, removeAccessToken, removeRefreshToken, setAccessToken, setRefreshToken} from './helpers';
 import api, {registerApi} from './api';
-import {IUser, LoginData} from './types';
+import {IUser, IUserEditable, LoginData} from './types';
 import {AxiosError} from 'axios';
-
+import {AppState, AuthState} from './auth';
 
 
 export const fetchUserData = createAsyncThunk(
@@ -17,6 +17,24 @@ export const fetchUserData = createAsyncThunk(
 			const {data} = await api.get('/auth/users/current');
 			return data;
 		} catch (e) {
+			return rejectWithValue('');
+		}
+	});
+
+export const editUserData = createAsyncThunk<IUser, IUserEditable>(
+	'auth/editUserData',
+	async (payload, {rejectWithValue, getState}) => {
+		try {
+			const token = getAccessToken();
+			if (token) {
+				api.defaults.headers.common['Authorization'] = `Bearer ${getAccessToken()}`;
+			}
+			const {auth} = getState() as AppState;
+			const userId = auth.user.id;
+			const {data} = await api.put(`/auth/users/${userId}/`, payload);
+			return data;
+		} catch (error) {
+			console.log(error);
 			return rejectWithValue('');
 		}
 	});

@@ -14,7 +14,7 @@
   padding: 5rem 5rem;
   margin: 2rem auto 5rem;
 
-  background: rgba(variables.$gray, .5);
+  background: rgba(variables.$gray, .8);
   box-shadow: .4rem 2rem 3rem -.25rem rgba(214, 214, 214, 0.25);
   backdrop-filter: blur(1.85rem);
   border-radius: 5rem;
@@ -44,5 +44,9 @@
     font-size: 2rem;
     font-weight: map-get(variables.$font-weights, "medium");
   }
-
+  &__form {
+    background-color: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
 }

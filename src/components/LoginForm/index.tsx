@@ -70,8 +70,6 @@ const LoginForm = () => {
 					isLoading ? 'Загрузка...' : 'Войти'
 				}
 			</button>
-
-
 		</form>
 	);
 };

@@ -141,45 +141,46 @@ const RegisterForm = () => {
 					/>
 				</label>
 			</fieldset>
-			<fieldset className={'form__fieldset'}>
-				<legend className={'form__legend'}>Расскажите о себе</legend>
-				<label className={'form__label'}>
-					<span className={'form__hint'}>Напишите через запятую свои любимые школьные предметы</span>
-					<textarea
-						className={'form__input form__textarea'}
-						name="subjects"
-						value={subjects}
-						onChange={(e) => setSubjects(e.target.value)}
-						placeholder="математика, физика, информатика"
-						rows={10}
-					>
-					</textarea>
-				</label>
-				<label className={'form__label'}>
-					<span className={'form__hint'}>Расскажите о своих академических достижениях</span>
-					<textarea
-						className={'form__input form__textarea'}
-						name="achievements"
-						placeholder="1-е место в олимпиаде по математике, 2-е место в олимпиаде по физике"
-						rows={10}
-						value={achievements}
-						onChange={(e) => setAchievements(e.target.value)}
-					>
-					</textarea>
-				</label>
-				<label className={'form__label'}>
-					<span className={'form__hint'}>Что-то ещё? Не стесняйтесь рассказать о себе</span>
-					<textarea
-						className={'form__input form__textarea'}
-						name="about"
-						value={about}
-						onChange={(e) => setAbout(e.target.value)}
-						placeholder="Я люблю решать задачи и помогать другим людям, увлекаюсь программированием и спортом!"
-						rows={10}
-					>
-					</textarea>
-				</label>
-			</fieldset>
+			{/*<fieldset className={'form__fieldset'}>*/}
+			{/*	<legend className={'form__legend'}>Расскажите о себе</legend>*/}
+			{/*	<label className={'form__label'}>*/}
+			{/*		<span className={'form__hint'}>Напишите через запятую свои любимые школьные предметы</span>*/}
+			{/*		<textarea*/}
+			{/*			className={'form__input form__textarea'}*/}
+			{/*			name="subjects"*/}
+			{/*			value={subjects}*/}
+			{/*			onChange={(e) => setSubjects(e.target.value)}*/}
+			{/*			placeholder="математика, физика, информатика"*/}
+			{/*			rows={10}*/}
+			{/*		>*/}
+			{/*		</textarea>*/}
+			{/*	</label>*/}
+			{/*	<label className={'form__label'}>*/}
+			{/*		<span className={'form__hint'}>Расскажите о своих академических достижениях</span>*/}
+			{/*		<textarea*/}
+			{/*			className={'form__input form__textarea'}*/}
+			{/*			name="achievements"*/}
+			{/*			placeholder="1-е место в олимпиаде по математике, 2-е место в олимпиаде по физике"*/}
+			{/*			rows={10}*/}
+			{/*			value={achievements}*/}
+			{/*			onChange={(e) => setAchievements(e.target.value)}*/}
+			{/*		>*/}
+			{/*		</textarea>*/}
+			{/*	</label>*/}
+			{/*	<label className={'form__label'}>*/}
+			{/*		<span className={'form__hint'}>Что-то ещё? Не стесняйтесь рассказать о себе</span>*/}
+			{/*		<textarea*/}
+			{/*			className={'form__input form__textarea'}*/}
+			{/*			name="about"*/}
+			{/*			value={about}*/}
+			{/*			onChange={(e) => setAbout(e.target.value)}*/}
+			{/*			placeholder="Я люблю решать задачи и помогать другим людям, увлекаюсь программированием и спортом!"*/}
+			{/*			rows={10}*/}
+			{/*		>*/}
+			{/*		</textarea>*/}
+			{/*	</label>*/}
+			{/*</fieldset>*/}
+
 			<div className={'form__error'}>
 				{errorText}
 			</div>

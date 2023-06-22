@@ -1,15 +1,65 @@
-import React from 'react';
+import React, {FormEvent, useEffect, useState} from 'react';
 import styles from './index.module.scss';
-import {IUser} from '../../utils/types';
 import Button from '../Button';
+import {useAppDispatch, useAppSelector} from '../../utils/hooks';
+import {editUserData, fetchUserData, logout} from '../../utils/authThunk';
+import {useNavigate} from 'react-router-dom';
 
 
-interface ProfileCardProps {
-	user: IUser,
-	onLogout: () => void
-}
+const ProfileCard: React.FC = () => {
+	const dispatch = useAppDispatch();
+	const {user} = useAppSelector((state) => state.auth);
+	const onLogout = () => {
+		dispatch(logout());
+	};
 
-const ProfileCard: React.FC<ProfileCardProps> = ({user, onLogout}) => {
+	useEffect(() => {
+		setFirstName(user.first_name || '');
+		setLastName(user.last_name || '');
+		setSubjects(user.favorite_subjects || '');
+		setAchievements(user.achievements || '');
+		setAbout(user.about || '');
+	}, [user]);
+
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [firstName, setFirstName] = useState<string>(user.first_name || '');
+	const [lastName, setLastName] = useState<string>(user.last_name || '');
+	const [errorText, setErrorText] = useState<string>('');
+	const [subjects, setSubjects] = useState<string>(user.favorite_subjects || '');
+	const [achievements, setAchievements] = useState<string>(user.achievements || '');
+	const [about, setAbout] = useState<string>(user.about || '');
+	const navigate = useNavigate();
+	const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		setIsLoading(true);
+		dispatch(editUserData({
+			first_name: firstName,
+			last_name: lastName,
+			favorite_subjects: subjects,
+			achievements,
+			about,
+		}))
+			.then((response: any) => {
+				const {payload} = response;
+
+				if (payload.id) {
+					setErrorText('');
+				} else {
+					const text: Array<string> = [];
+					for (const key in payload) {
+						text.push(...payload[key]);
+					}
+					setErrorText(text.join('\n'));
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+				setErrorText(error);
+			}).finally(() => {
+			setIsLoading(false);
+
+		});
+	};
 
 	return (
 		<div className={styles.profileCard}>
@@ -20,12 +70,83 @@ const ProfileCard: React.FC<ProfileCardProps> = ({user, onLogout}) => {
 						strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
 				</svg>
 			</div>
+			<p>{user.username}</p>
+			<p>{user.email}</p>
+			<form onSubmit={onSubmit} className={`form ${styles.profileCard__form}`}>
+				<fieldset className={'form__fieldset'}>
+					<legend className={'form__legend'}>Основная информация</legend>
 
-			<div className={styles.profileCard__info}>
-				<p className={styles.profileCard__text}>{user.first_name}</p>
-				<p className={styles.profileCard__text}>{user.last_name}</p>
-				<p className={styles.profileCard__text}>{user.email}</p>
-			</div>
+					<label className={'form__label'}>
+						<span className={'form__hint'}>Имя</span>
+						<input
+							className={'form__input'}
+							type="text"
+							name="first_name"
+							placeholder="Иван"
+							value={firstName}
+							onChange={(e) => setFirstName(e.target.value)}
+							required
+						/>
+					</label>
+					<label className={'form__label'}>
+						<span className={'form__hint'}>Фамилия</span>
+						<input
+							className={'form__input'}
+							type="text"
+							name="last_name"
+							placeholder="Иванов"
+							value={lastName}
+							onChange={(e) => setLastName(e.target.value)}
+							required
+						/>
+					</label>
+				</fieldset>
+				<fieldset className={'form__fieldset'}>
+					<legend className={'form__legend'}>Расскажите о себе</legend>
+					<label className={'form__label'}>
+						<span className={'form__hint'}>Напишите через запятую свои любимые школьные предметы</span>
+						<textarea
+							className={'form__input form__textarea'}
+							name="subjects"
+							value={subjects}
+							onChange={(e) => setSubjects(e.target.value)}
+							placeholder="математика, физика, информатика"
+							rows={10}
+						>
+					</textarea>
+					</label>
+					<label className={'form__label'}>
+						<span className={'form__hint'}>Расскажите о своих академических достижениях</span>
+						<textarea
+							className={'form__input form__textarea'}
+							name="achievements"
+							placeholder="1-е место в олимпиаде по математике, 2-е место в олимпиаде по физике"
+							rows={10}
+							value={achievements}
+							onChange={(e) => setAchievements(e.target.value)}
+						>
+					</textarea>
+					</label>
+					<label className={'form__label'}>
+						<span className={'form__hint'}>Что-то ещё? Не стесняйтесь рассказать о себе</span>
+						<textarea
+							className={'form__input form__textarea'}
+							name="about"
+							value={about}
+							onChange={(e) => setAbout(e.target.value)}
+							placeholder="Я люблю решать задачи и помогать другим людям, увлекаюсь программированием и спортом!"
+							rows={10}
+						>
+					</textarea>
+					</label>
+				</fieldset>
+				<div className={'form__error'}>
+					{errorText}
+				</div>
+				<button className={'form__submit'} type="submit" disabled={isLoading}>
+					{isLoading ? 'Загрузка...' : 'Изменить'}
+				</button>
+			</form>
 			<Button onClick={onLogout} text="Выйти"/>
 		</div>
 	);

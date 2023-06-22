@@ -1,6 +1,10 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {fetchUserData, login, logout, register} from './authThunk';
+import {editUserData, fetchUserData, login, logout, register} from './authThunk';
 import {IUser} from './types';
+
+export interface AppState {
+	auth: AuthState;
+}
 
 export interface AuthState {
 	user: IUser;
@@ -17,6 +21,44 @@ export const authSlice = createSlice({
 		extraReducers: (builder) => {
 			builder.addCase(
 				fetchUserData.fulfilled, (state, action) => {
+					state.user = action.payload;
+				}
+			);
+
+			builder.addCase(
+				fetchUserData.rejected, (state, action) => {
+					state.user = {
+						id: undefined,
+						username: '',
+						password: '',
+						email: '',
+						first_name: '',
+						last_name: '',
+						about: '',
+						favorite_subjects: '',
+						achievements: '',
+					};
+				}
+			);
+
+			builder.addCase(
+				fetchUserData.pending, (state, action) => {
+					state.user = {
+						id: undefined,
+						username: '',
+						password: '',
+						email: '',
+						first_name: '',
+						last_name: '',
+						about: '',
+						favorite_subjects: '',
+						achievements: '',
+					};
+				}
+			);
+
+			builder.addCase(
+				editUserData.fulfilled, (state, action) => {
 					state.user = action.payload;
 				}
 			);

@@ -5,16 +5,22 @@ export interface IDepartmentList {
 	'tags': string[];
 }
 
-export interface IUser {
-	id?: number;
-	username: string;
-	password: string;
-	email: string;
+export interface IUserEditable {
 	first_name: string;
 	last_name: string;
 	about: string;
 	favorite_subjects: string;
 	achievements: string;
+}
+
+export interface IUserReadOnly {
+	id?: number;
+	username: string;
+	password: string;
+	email: string;
+}
+
+export interface IUser extends IUserReadOnly, IUserEditable {
 }
 
 export interface IDepartmentDetail {
